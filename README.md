@@ -16,4 +16,7 @@ The format which Blenbridge writes is legacy .vtk. This format is available in t
 adjunct apps, Paraview and Gmsh. Using all four of the central apps, finite element mesh can be
 systematically created with Blender.
 
+Blenbridge is written in Object Pascal, using Lazarus. The current version was compiled under
+Lazarus 1.6.
+
 
