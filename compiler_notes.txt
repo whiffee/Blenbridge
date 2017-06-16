@@ -1,0 +1,26 @@
+Lin:
+Compiler notes, applicable to final compiling.
+1. Under Project>Project_Options>Application:
+  a. The application icon is identified by path.
+  b. The name Blenbridge is entered in title field.
+2. Under Compiler_Options>Paths
+  a. Target file name is changed to Blenbridge.
+3. Under Compilation_and_Linking
+  a. Optimization Level is set to 2.
+  b. Unit Style is set to CX (Smart Linkable).
+  c. Linking is set to XX (Link Smart).
+4. Under Debugging
+  a. Generate debugging info for GDB is unchecked.
+  b. Strip symbols from executable is checked.
+
+
+Win:
+The Linux compiler notes apply, with one addition:
+Under Project>Project_Options>Application, Enabled DPI
+Awareness should be checked. 
+
+Both Lin and Win:
+Object Inspector notes.
+The .pas and .lfm files are slightly different for the
+two platforms and for best results should not be 
+swapped.
