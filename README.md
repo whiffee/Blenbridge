@@ -7,10 +7,8 @@ exploits this fact. It attempts to make a finite element out of each face, then 
 whole bunch of duplicates. 
 
 Blenbridge could not work without the cooperation of Blender and Blender's export scripts. Blender
-is tolerant of the non-manifold meshes that make up the proto-model. (However, not all Blender 
-commands will work.) And the Blender .ply export script does not care about the non-manifold nature of
-the mesh it exports. (The .obj export script can also function in this respect, but the .ply
-format, overall, seems superior.)
+is tolerant of the non-manifold meshes that make up the proto-model. And the Blender .ply export 
+script does not care about the non-manifold nature of the mesh it exports. 
 
 The format which Blenbridge writes is legacy .vtk. This format is available in two important
 adjunct apps, Paraview and Gmsh. Using all four of the central apps, finite element mesh can be
