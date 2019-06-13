@@ -1,0 +1,42 @@
+Blenbridge should run without issue on recent
+Ubuntu and derivatives. If it does not run on
+a particular Linux distro, the author apologizes.
+Blenbridge 1.18 was built using Lazarus 1.8.4.
+Compiling using Lazarus should be straightforward.
+In case of difficulty installing Lazarus 1.8.4,
+refer this this post: https://forum.lazarus.freepascal.org/index.php/topic,41524.0.html
+
+Other notes: 
+
+Lin:
+
+1. The project uses the SynEdit component of the LCL.
+It should be integrated into the project, but if not:
+Under Project>Project_Inspector>Add>New_Requirement:
+  a. The requirement for package SynEdit is added.
+
+Compiler notes, applicable to final compiling.
+1. Under Project>Project_Options>Application:
+  a. The application icon is identified by path.
+  b. The name Blenbridge is entered in title field.
+2. Under Compiler_Options>Paths
+  a. Target file name is changed to Blenbridge.
+3. Under Compilation_and_Linking
+  a. Optimization Level is set to 2.
+  b. Unit Style is set to CX (Smart Linkable).
+  c. Linking is set to XX (Link Smart).
+4. Under Debugging
+  a. Generate debugging info for GDB is unchecked.
+  b. Strip symbols from executable is checked.
+
+
+Win:
+The Linux compiler notes apply, with one addition:
+Under Project>Project_Options>Application, Enabled DPI
+Awareness should be checked. 
+
+Both Lin and Win:
+Object Inspector notes.
+The .pas and .lfm files are slightly different for the
+two platforms and for best results should not be 
+swapped.
