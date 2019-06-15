@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#A01FCB; } 
+		a:visited { color:#800080; } 
+		a:active { color:#8018CB; } 
+		a:hover { color:#E3B4F3; } 
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:12000px; width:853px;padding:0;  margin: 0;">
+<div style="text-align:left;">
+  <div style="position:absolute; left:231px; top:255px; width:150px; height:40px; background:none; " id="text_5afcd296">
+    </div>
+  <div style="position:absolute; left:53px; top:0px; width:800px; height:12000px; background:none; " id="text_435f310d">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:112px; top:105px; width:596px; height:305px; background:none; " id="text_775225c5">
+        <div style="text-align:center;">
+          <span style="font-size:22pt; font-family:Charter; color:#000000; "><br/><br/><br/>Lifted 1.2 Documentation</span>
+          <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/><br/><br/><br/><br/></span>
+          <span style="font-size:18pt; font-family:Charter; color:#000000; ">by Gary Bollenbach</span>
+          <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/><br/></span>
+          <span style="font-size:16pt; font-family:Charter; color:#000000; ">July 6, 2018</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:1200px; width:307px; height:301px; background:none; " id="text_5aadfb99">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The pic to the right shows the way that Lifted works. The center node is shared by a number of elements, whose edges are seen here as radial lines. A polygon of points, here a twice subdivided ico-sphere consisting of 42 points, is created around the central node. A circuit is made in which a trial move of the central point places it sequentially at each of the ico points, and a quality attribute is evaluated there. The conditions represented by each position are analyzed and saved. Then, if the average quality of the entire group of elements improves when the point is located at the most favorable trial position, that position is retained, and another vertex point (usually the worst case) is considered.</span>
+          </div>
+        </div>
+      <img src="images/ico_sphere_1024x979.png" style="position:absolute; left:406px; top:1200px; width:393px; height:376px; background:none; " id="img_6990e6f8" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1684px; width:307px; height:301px; background:none; " id="text_15054823">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">At right is an element with ordinary VTK node winding. Notice that (from the outside) the numbering can go clockwise or counter-clockwise, and that its outside direction reverses for the opposite face. This is not satisfactory for Verdict winding however. The Verdict requirement is for the first face listed to be wound clockwise. In other words, for the cube pictured, the line 8 0 1 2 3 4 5 6 7 would not be acceptable to Verdict, whereas the line 8 4 5 6 7 0 1 2 3 would be acceptable.For tetrahedra the Verdict requirement matches VTK. All VTK mesh which is opened by Lifted is rearranged, if necessary, to enforce Verdict requirements.</span>
+          </div>
+        </div>
+      <img src="images/047_paste_2_937x1024.png" style="position:absolute; left:540px; top:1662px; width:258px; height:282px; background:none; " id="img_489536cc" alt="" title="" />
+      <img src="images/046_paste_image_1024x983.png" style="position:absolute; left:540px; top:1943px; width:258px; height:242px; background:none; " id="img_72631e1e" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2274px; width:307px; height:282px; background:none; " id="text_5b3afa51">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">At right is the U/I. On the &#8216;Current&#8217; panel are located the two Verdict quality standards used by Lifted, along with checkboxes to show which one controls the current calculations. The &#8216;Settings&#8217; panel governs the geometrics of the trial positioning scheme. The &#8216;Target&#8217; panel displays the least conforming element, a text box for single element treatment, and a quality guard factor. The Size button maintains the preferred U/I size.  Normal termination of the Execute procedure is automatic, based on Sample size. However, the Stop button is available if early termination is desired. If saved immediately after pressing the Stop button, the saved file will show the quality levels displayed at the the time of the stop.</span>
+          </div>
+        </div>
+      <img src="images/001_u_i_1024x782.png" style="position:absolute; left:386px; top:2274px; width:414px; height:315px; background:none; " id="img_637542e9" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2655px; width:307px; height:291px; background:none; " id="text_59bce299">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; font-weight:bold; text-decoration:underline; ">Demo 1</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>At right is shown the mesh for the first demo. It consists of a chunk of 312 hex elements with a partly rounded exterior. Three of its least regular elements are shown. Because none of the nodes for these elements reside on the mesh surface, Lifted may be able to accomplish a gain in quality. If, say, four nodes of a hex element were located on the surface, Lifted could still operate on the remaining internal nodes.<br/><br/>We note that although Lifted can work on both hexahedral and tetrahedral mesh, the elements of the model must all be of the same type. Additionally, elements must be of 1st Order.</span>
+          </div>
+        </div>
+      <img src="images/002_worst_ele_798x1024.png" style="position:absolute; left:424px; top:2655px; width:375px; height:481px; background:none; " id="img_40a229fe" alt="" title="" />
+      <div style="position:absolute; left:50px; top:3199px; width:307px; height:367px; background:none; " id="text_6d7f694e">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">In regard to the U/I settings, the default Sample box factor of 1.0 means that the number of samples considered is 1.0 times the number of elements in the mesh. An excessive sample size does not hurt the results, but wastes time. If the Current panel has locked into a static display, but the node counter shown at the bottom of the U/I during calculations still has a considerable number remaining, the sample size is too big. If the &#8216;Current&#8217; panel shows active change throughout the run, the sample size may be, but is not necessarily, too small. Generally, the larger the model, the smaller the sample size multiplying factor needs to be. The Edge % refers to the percent of the minimum edge length of the current node used to define the &#8216;radius&#8217; of the test polyhedron. The Poly Pts checkboxes control the number of enclosed test points, making up either a 12-, 20-, or 42-point polyhedron.</span>
+          </div>
+        </div>
+      <img src="images/049_top_table_1024x345.png" style="position:absolute; left:370px; top:3198px; width:429px; height:135px; background:none; " id="img_1cbf4b04" alt="" title="" />
+      <img src="images/048_bottom_table_1024x849.png" style="position:absolute; left:370px; top:3357px; width:429px; height:356px; background:none; " id="img_19927b9e" alt="" title="" />
+      <div style="position:absolute; left:370px; top:3734px; width:430px; height:234px; background:none; " id="text_78f5a594">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The Verdict standard for Scaled Jacobian of hexes is 0.5, and for Diagonal measure it is 0.65.<br/><br/>The top table above shows the Scaled Jacobian and Diagonal scores of the demo file on opening. A single run with the Scaled Jacobian checkbox checked, and settings as shown in the second table, gives an improved value over the original. Then in the third table we switch checkboxes and play with the Diagonal calculations. The sequence of results in the Diagonal column shows an upward trend in values, and the reader may perhaps see a suggestion of a kind of method in the assignment of test values to Edge % and Poly Pts parameters. However, we are presently unable to give a general strategy for the best use of the fields.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:4005px; width:277px; height:159px; background:none; " id="text_3ed1db06">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; font-weight:bold; text-decoration:underline; ">Demo 2</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>At right is shown the mesh for the second demo. It is a sort of semi-arch of 912 hex elements. Five of its least regular elements are illustrated, and the left three elements shown each have four surface nodes.</span>
+          </div>
+        </div>
+      <img src="images/008_some_worst_elements_1024x897.png" style="position:absolute; left:356px; top:4005px; width:444px; height:389px; background:none; " id="img_316fdd3f" alt="" title="" />
+      <div style="position:absolute; left:50px; top:4457px; width:277px; height:373px; background:none; " id="text_271f2cf6">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The top pic shows the instrument board when the file is loaded. We understand after a couple of trials that this file locks up fast, so there is no need to retain a large sample. We also discover that the Scaled Jacobian is not sensitive, and so we use a standard edge length with a small polyhedron. Then we are ready to try to improve the Diagonal. We find it resistant to change.<br/><br/>Incidentally, it may be time to comment on the SJ Min text block in the Target panel. This value is the minimum Scaled Jacobian which is allowed to appear as the Diagonal is calculated. It is not fully dependable however, and may require some padding. Note that Diagonal calculations will not start unless the current Scaled Jacobian is equal to or greater than the current SJ Min.</span>
+          </div>
+        </div>
+      <img src="images/009_demo2__1.png" style="position:absolute; left:356px; top:4457px; width:444px; height:126px; background:none; " id="img_26caea54" alt="" title="" />
+      <img src="images/010_demo2__2.png" style="position:absolute; left:356px; top:4610px; width:444px; height:127px; background:none; " id="img_36360adc" alt="" title="" />
+      <img src="images/042_demo2__4.png" style="position:absolute; left:356px; top:4764px; width:444px; height:127px; background:none; " id="img_6779c72" alt="" title="" />
+      <div style="position:absolute; left:50px; top:4965px; width:412px; height:424px; background:none; " id="text_1f3203a9">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; font-weight:bold; text-decoration:underline; ">Demo 3</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>At right is shown the mesh for the third demo. It is a quarter hole with a penetration, consisting of of 492 hex elements. Four of its least regular elements are illustrated, and none contain surface nodes.<br/><br/>A word about Lifted&#8217;s testing algorithm may be in order. A search path is traveled twice, and in the first trip improvements are sought for nonconforming elements, and the test results stored. Scores are then sorted. At that point the initial conditions are reset, and the number of iterations are conducted which produced the highest score on the first half of the run, thus seizing the optimal value for those settings.<br/><br/>If Lifted encounters a user-entered number in the Elem No edit box, it calculates that element and then stops. This feature is available for special effects, when the preferential sorting of the auto Execute procedure is not desired, or to skip a stuck element and do others. If the chosen element is not the worst case, then the Status message at the top of the interface must be relied on to inform the user whether or not processing the chosen element results in improvement.</span>
+          </div>
+        </div>
+      <img src="images/013_demo3__1.png" style="position:absolute; left:595px; top:4965px; width:205px; height:455px; background:none; " id="img_50be536e" alt="" title="" />
+      <div style="position:absolute; left:50px; top:5484px; width:280px; height:311px; background:none; " id="text_63ce59bf">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The pictures at right show some panels for the third demo. The second one shows that it is easy to obtain a creditable Scaled Jacobian with this mesh. A couple of trials demonstrate a high sensitivity when calculating the Diagonal. Therefore we raise the SJ Min value to protect the Scaled Jacobian, but find it an unnecessary precaution when using the chosen settings.</span>
+          </div>
+        </div>
+      <img src="images/014_demo3__2.png" style="position:absolute; left:356px; top:5484px; width:444px; height:127px; background:none; " id="img_22f9d2c5" alt="" title="" />
+      <img src="images/043_demo3_x2.png" style="position:absolute; left:356px; top:5640px; width:444px; height:127px; background:none; " id="img_65cb8bb" alt="" title="" />
+      <img src="images/044_demo3_x3.png" style="position:absolute; left:356px; top:5795px; width:444px; height:127px; background:none; " id="img_4a6b2af2" alt="" title="" />
+      <div style="position:absolute; left:50px; top:5977px; width:280px; height:222px; background:none; " id="text_55674728">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; font-weight:bold; text-decoration:underline; ">Demo 4</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>The pictures at right show the mesh for the fourth demo. It is a cutaway of a journal housing, consisting of 1494 tetrahedral elements. Four of the least conforming elements are shown lower right. None of them contain a surface node.</span>
+          </div>
+        </div>
+      <img src="images/019_demo4__3.png" style="position:absolute; left:474px; top:5977px; width:326px; height:266px; background:none; " id="img_f857295" alt="" title="" />
+      <div style="position:absolute; left:50px; top:6655px; width:280px; height:272px; background:none; " id="text_1cad1a91">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The picture at right shows the Lifted panel upon opening the mesh file. The tetrahedral analysis involves fewer edit boxes than the hex equivalent, and the unused ones are grayed out. The Verdict Edge Ratio attribute is the only one we seek, and the acceptable maximum level is judged to be 3.0.<br/><br/>The lower pic shows the edge ratio value achieved by the settings depicted. We did not find settings which refined the results in any successive trials, although we did find a few settings which tied the outcome.</span>
+          </div>
+        </div>
+      <img src="images/020_demo4__4.png" style="position:absolute; left:523px; top:6296px; width:277px; height:310px; background:none; " id="img_58563d73" alt="" title="" />
+      <img src="images/018_demo4__2.png" style="position:absolute; left:356px; top:6655px; width:444px; height:127px; background:none; " id="img_6c8a3dbe" alt="" title="" />
+      <img src="images/017__demo4__1.png" style="position:absolute; left:356px; top:6813px; width:444px; height:127px; background:none; " id="img_46613699" alt="" title="" />
+      <div style="position:absolute; left:50px; top:6994px; width:280px; height:637px; background:none; " id="text_4661cd82">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; font-weight:bold; text-decoration:underline; ">Demo 5</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>The mesh consists of 2967 tetrahedra. It was meshed with the Netgen subprogram within Elmer, using a default &#8216;h&#8217; value. It was translated to .msh format by e2aps and then opened in Gmsh and saved as a .vtk file. (See references.)<br/><br/>The three elements with the lowest quality rating are shown. All 9 nodes comprising these elements are surface nodes.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>In view of the above situation, it is obvious that Lifted cannot alter the Edge Ratio quality level.</span>
+          </div>
+        </div>
+      <img src="images/041_demo5__ex.png" style="position:absolute; left:395px; top:6993px; width:405px; height:453px; background:none; " id="img_5915f34b" alt="" title="" />
+      <img src="images/045_demo5_x1.png" style="position:absolute; left:356px; top:7501px; width:444px; height:126px; background:none; " id="img_5b22c42e" alt="" title="" />
+      <div style="position:absolute; left:50px; top:7685px; width:350px; height:209px; background:none; " id="text_3f964b56">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; font-weight:bold; text-decoration:underline; ">Demo 6</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>The next demo continues with the hinge mesh, but at a higher resolution, with &#8216;h&#8217; value set at 1.0 during its construction. It consists of 41,211 elements and 7777 nodes.<br/><br/>For the two sample defective elements shown at right, no surface nodes are present.</span>
+          </div>
+        </div>
+      <img src="images/024_demo6__1.png" style="position:absolute; left:527px; top:7685px; width:273px; height:357px; background:none; " id="img_7678d4dd" alt="" title="" />
+      <div style="position:absolute; left:50px; top:8099px; width:350px; height:209px; background:none; " id="text_3b8da00f">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The green element labels in the Paraview view at right show the locations of the elements of interest when seen in a plan view. Lifted becomes sluggish &#8722; to the point of unusability &#8722; when working on mesh of higher density. Therefore we demonstrate how to split the mesh to speed things up.<br/><br/>The arrow in the pic is pointing to the Paraview (version 4) icon for &#8216;Select Cells Through&#8217;. This drills through a mesh, capturing all included elements, resulting in the selection shown below.</span>
+          </div>
+        </div>
+      <img src="images/028_demo6__5.png" style="position:absolute; left:465px; top:8099px; width:335px; height:478px; background:none; " id="img_66e5429d" alt="" title="" />
+      <div style="position:absolute; left:50px; top:8649px; width:350px; height:84px; background:none; " id="text_53c17b29">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Next we use the &#8216;Extract Selection&#8217; filter, obtained through the Filters menu, to break off the selection into a separate chunk, shown right.</span>
+          </div>
+        </div>
+      <img src="images/029_demo6__6.png" style="position:absolute; left:50px; top:8332px; width:205px; height:226px; background:none; " id="img_29677850" alt="" title="" />
+      <img src="images/030_demo6__7.png" style="position:absolute; left:564px; top:8649px; width:236px; height:196px; background:none; " id="img_53120e5a" alt="" title="" />
+      <div style="position:absolute; left:494px; top:8890px; width:306px; height:187px; background:none; " id="text_3669e0f5">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Paraview version 4 has the Selection Inspector, and from it we invert the selection, thereby capturing all the elements which were not in the original extraction.<br/><br/>We employ the Extract Selection filter once again on the parent mesh.  Now we have two pieces.</span>
+          </div>
+        </div>
+      <img src="images/031_demo6__8.png" style="position:absolute; left:50px; top:8890px; width:375px; height:266px; background:none; " id="img_c145133" alt="" title="" />
+      <div style="position:absolute; left:50px; top:9210px; width:360px; height:158px; background:none; " id="text_a8bef60">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We make sure that the first chunk of elements is the only object selected or visible in the Pipeline Browser visible at the left side of the screen. Then the File&#8658;Save Data menu selection brings up a dialog box, in which we choose to save a Legacy .vtk file type. After saving the working chunk, we save the parent chunk in the same way.</span>
+          </div>
+        </div>
+      <img src="images/032_demo6__9.png" style="position:absolute; left:534px; top:9210px; width:266px; height:163px; background:none; " id="img_1ee20c64" alt="" title="" />
+      <div style="position:absolute; left:50px; top:9413px; width:296px; height:514px; background:none; " id="text_6d46eefc">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We now open the small chunk in Lifted. The Lifted operating panels for the small chunk are shown right. The settings shown produce a considerable improvement. Note that the element numbers do not correspond with the original numbering system, which referred to the pre-breakup model. Also note that because Lifted does not tamper with exterior nodes, there is no glitch or discontinuity when we put the two chunks back together.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>We use the File&#8658;Clear option in Gmsh to clear the deck, then load the modified small chunk. We now use the option Merge under the File menu to bring in the parent chunk. The geometry matches perfectly. We press the 3D meshing button just for luck and then save as a .vtk.</span>
+          </div>
+        </div>
+      <img src="images/035_demo6__12.png" style="position:absolute; left:356px; top:9414px; width:444px; height:127px; background:none; " id="img_3610c831" alt="" title="" />
+      <img src="images/036_demo6__13.png" style="position:absolute; left:356px; top:9575px; width:444px; height:127px; background:none; " id="img_7c89f87c" alt="" title="" />
+      <img src="images/037_demo6__14.png" style="position:absolute; left:374px; top:9747px; width:426px; height:221px; background:none; " id="img_13002dc2" alt="" title="" />
+      <div style="position:absolute; left:58px; top:10024px; width:341px; height:153px; background:none; " id="text_92f8692">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We open the composite mesh in Paraview again. Everything looks fine, but on consulting the Information tab below the Pipeline Browser we notice that the exterior nodes in the small chunk did not get merged in Gmsh with those of the parent chunk. Not a problem, we simply use the Clean to Grid filter and the duplicate nodes are absorbed, giving us the exact number of nodes we started with.<br/><br/><br/><br/><br/><br/><br/></span>
+          </div>
+        </div>
+      <img src="images/038_demo6__15.png" style="position:absolute; left:584px; top:10024px; width:216px; height:145px; background:none; " id="img_78742497" alt="" title="" />
+      <img src="images/039_demo6__16.png" style="position:absolute; left:584px; top:10198px; width:216px; height:108px; background:none; " id="img_7dd98ee0" alt="" title="" />
+      <img src="images/040_demo6__17.png" style="position:absolute; left:356px; top:10356px; width:444px; height:245px; background:none; " id="img_3a226f88" alt="" title="" />
+      <div style="position:absolute; left:50px; top:10359px; width:266px; height:227px; background:none; " id="text_3b82ee4e">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The composite mesh Edge Ratio quality shows the influence of the improved small chunk. The unimpressive score of 2.97 is due to an element or two in the parent chunk with unluckily placed surface nodes.<br/><br/><br/><br/><br/><br/></span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:10709px; width:705px; height:196px; background:none; " id="text_65d20358">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">References:<br/><br/><br/>&#8226; Geuzaine, C. and Remacle, J-F. (2017). Gmsh 2.16.0 [Computer software]  <br/>&#8226; CSC - IT Center for Science. (2016). Elmerfem-CSC 8.2-20170525 [Computer software]  <br/>&#8226; Kitware, Inc. (2013). Paraview 4.0.1 [Computer software]<br/>&#8226; Sch&#246;berl, Joachim (2009). Netgen 4.9.11 [Computer software]<br/><br/><br/><br/><br/></span>
+          </div>
+        </div>
+      <img src="images/050_arrow.png" style="position:absolute; left:594px; top:8136px; width:11px; height:33px; background:none; " id="img_3ac38fd0" alt="" title="" />
+      <div style="position:absolute; left:50px; top:10897px; width:74px; height:47px; background:none; " id="text_5430907c">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><a href="index.html">Home</a></span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/><br/><br/><br/></span>
+          </div>
+        </div>
+      <img src="images/orange_box_text.png" style="position:absolute; left:50px; top:3646px; width:220px; height:132px; background:none; " id="img_266be3b7" alt="" title="" />
+      </div>
+    </div>
+  <div style="position:absolute; left:311px; top:27px; width:459px; height:61px; background:none; " id="text_23e78b93">
+    <div style="text-align:left;">
+      <span style="font-size:7pt; font-family:'Trebuchet MS', Helvetica, sans-serif; color:#0000FF; ">If text overlaps pictures, it means that font size needs to be reduced. After such font size reduction, the user may wish to boost the page's zoom.</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
