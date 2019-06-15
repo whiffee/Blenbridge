@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#0000FF; } 
+		a:visited { color:#0000FF; } 
+		a:active { color:#0000FF; } 
+		a:hover { color:#0000FF; } 
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:3500px; width:1000px;padding:0;  margin: 0;">
+<div style="text-align:left;">
+  <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+  <div style="position:absolute; left:403px; top:191px; width:150px; height:40px; background:none; " id="text_42992fc8">
+    </div>
+  <div style="position:absolute; left:53px; top:0px; width:800px; height:3500px; background:none; " id="text_5cf6bb4">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:50px; top:100px; width:241px; height:531px; background:none; " id="text_5676e254">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; text-decoration:underline; ">Demo 14</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>This object is a bracket; the model can be found in the INRIA model repository as a .mesh file, and is converted by Gmsh into a .stl file. Blender imports the .stl file using its .stl import script. Its title is &#8220;bracket1&#8221; (See References). The ordinary Tris-to-Quads and Limited Dissolve commands are used to prepare the mesh for editing.<br/><br/><br/><br/>The main interest in this object is its slanted sides, and how to combine them into the geometrical landscape.<br/><br/><br/><br/><br/><br/><br/>The idea of a boolean cut naturally arises. However, we remember that booleans are allergic to non-manifold meshes. The next idea to occur to us is Knife Project.</span>
+          </div>
+        </div>
+      <img src="images/0206.png" style="position:absolute; left:330px; top:100px; width:445px; height:238px; background:none; " id="img_5ed3bce5" alt="" title="" />
+      <img src="images/0207.png" style="position:absolute; left:330px; top:359px; width:445px; height:151px; background:none; " id="img_10d7e9f6" alt="" title="" />
+      <img src="images/0208.png" style="position:absolute; left:330px; top:530px; width:165px; height:170px; background:none; " id="img_50452a12" alt="" title="" />
+      <div style="position:absolute; left:50px; top:722px; width:242px; height:213px; background:none; " id="text_2fd0cfa3">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We note that the left and right flange tabs are not of equal length, a fact which will affect mirroring.<br/><br/>The vertices of the original thru hole are not evenly spaced, and the hole is replaced with a 32-division hole.<br/><br/>We create a vertical plate from a lengthwise bisection, then equip it with a typical face design and extrude on the y-axis.</span>
+          </div>
+        </div>
+      <img src="images/0209.png" style="position:absolute; left:299px; top:721px; width:475px; height:211px; background:none; " id="img_4499fa0f" alt="" title="" />
+      <div style="position:absolute; left:50px; top:962px; width:290px; height:302px; background:none; " id="text_5265dafc">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">An edge is copied, converted to a separate object, (using &#8216;p&#8217;), scaled, and positioned, then used as a cutter. After pressing Knife Project, we check the &#8216;Cut through&#8217; checkbox, to cleanly slice all the way through the mesh.Mirroring will save us the trouble of doing this twice.<br/><br/>The slant is 10.000 degrees off vertical. Circle select, &#8216;c&#8217;, selects the cut-off faces for deletion.</span>
+          </div>
+        </div>
+      <img src="images/0210.png" style="position:absolute; left:392px; top:967px; width:179px; height:326px; background:none; " id="img_2204bb82" alt="" title="" />
+      <img src="images/0211.png" style="position:absolute; left:571px; top:967px; width:203px; height:326px; background:none; " id="img_58660a36" alt="" title="" />
+      <img src="images/0212.png" style="position:absolute; left:50px; top:1317px; width:117px; height:181px; background:none; " id="img_6d21efc9" alt="" title="" />
+      <img src="images/0213.png" style="position:absolute; left:174px; top:1317px; width:161px; height:139px; background:none; " id="img_76da69f1" alt="" title="" />
+      <img src="images/0214.png" style="position:absolute; left:174px; top:1466px; width:161px; height:64px; background:none; " id="img_161f468c" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1575px; width:277px; height:326px; background:none; " id="text_1cdf9a99">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">After cutting we have the task of filling in the cut-away faces. There are shortcuts to this process. After selecting the open edges in end view with a border select, &#8216;b&#8217;, we press Alt + &#8216;f&#8217;, and all the faces are filled. We follow this up with the Tris-to-Quads command, Alt + &#8216;j&#8217;, which leaves us with the whole area filled and a little extra. Deleting the unneeded faces and converting a few others is much faster than doing the fill-in by hand. The appearance is also better, since the automated process builds all faces with normals facing in the same direction.</span>
+          </div>
+        </div>
+      <img src="images/0215.png" style="position:absolute; left:342px; top:1317px; width:434px; height:114px; background:none; " id="img_68c2888d" alt="" title="" />
+      <img src="images/0216.png" style="position:absolute; left:342px; top:1431px; width:434px; height:170px; background:none; " id="img_6a2fb4c3" alt="" title="" />
+      <img src="images/0217.png" style="position:absolute; left:342px; top:1601px; width:434px; height:161px; background:none; " id="img_2c81c98c" alt="" title="" />
+      <img src="images/0218.png" style="position:absolute; left:342px; top:1762px; width:434px; height:176px; background:none; " id="img_64e438d" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1981px; width:204px; height:202px; background:none; " id="text_5a2ec878">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final quality is acceptable, according to Scaled Jacobian standards (right), as well as Diagonal measure (below).</span>
+          </div>
+        </div>
+      <img src="images/0219.png" style="position:absolute; left:284px; top:2595px; width:490px; height:278px; background:none; " id="img_716c74c8" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2595px; width:216px; height:210px; background:none; " id="text_5830792d">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final mirrored bracket mesh emerges from Gmsh with 3072 elements and 4380 nodes.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:2933px; width:359px; height:17px; background:none; " id="text_7f763ffa">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
+          </div>
+        </div>
+      <img src="images/20_sj_qual.png" style="position:absolute; left:352px; top:1986px; width:423px; height:339px; background:none; " id="img_d849a08" alt="" title="" />
+      <img src="images/21_diag_qual.png" style="position:absolute; left:50px; top:2251px; width:466px; height:273px; background:none; " id="img_39841321" alt="" title="" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

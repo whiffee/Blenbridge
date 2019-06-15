@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#0000FF; } 
+		a:visited { color:#0000FF; } 
+		a:active { color:#0000FF; } 
+		a:hover { color:#0000FF; } 
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:4000px; width:1000px;padding:0;  margin: 0;">
+<div style="text-align:left;">
+  <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+  <div style="position:absolute; left:403px; top:191px; width:150px; height:40px; background:none; " id="text_431b5289">
+    </div>
+  <div style="position:absolute; left:53px; top:0px; width:800px; height:4000px; background:none; " id="text_534c4641">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:50px; top:100px; width:231px; height:262px; background:none; " id="text_32442966">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; text-decoration:underline; ">Demo 21</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>This object is a connecting rod; the model can be found in the INRIA model repository, Mechanical section, as a .mesh file, and is opened in Gmsh, then saved as a .stl file and imported into Blender using Blender &#8217; s .stl import script. Its title is &#8220;bielle_tout,&#8221; (See References).  We give the usual Tris-to-Quads and Partial Dissolve commands.</span>
+          </div>
+        </div>
+      <img src="images/0303.png" style="position:absolute; left:297px; top:93px; width:477px; height:282px; background:none; " id="img_62785be2" alt="" title="" />
+      <img src="images/p091_1.png" style="position:absolute; left:297px; top:397px; width:477px; height:175px; background:none; " id="img_23e3ff70" alt="" title="" />
+      <div style="position:absolute; left:52px; top:392px; width:244px; height:169px; background:none; " id="text_63745d28">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We quarter the connecting rod. Though not fully reflected in the view shown, we liberally cut the mesh with the knife tool, even if the cuts are known to be temporary, so that further face modification can be done by vertex sliding. The ability of the knife tool to follow the surface contours of the mesh makes it invaluable.</span>
+          </div>
+        </div>
+      <img src="images/0305.png" style="position:absolute; left:297px; top:704px; width:477px; height:374px; background:none; " id="img_5ee56c48" alt="" title="" />
+      <div style="position:absolute; left:50px; top:709px; width:240px; height:271px; background:none; " id="text_2788e5d1">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Smoothing the mesh. The red element is part of a collection of low-quality elements imported from Paraview for reference. It is a separate object and not selectable in Blender when the main mesh object is selected. Since it originated in the Gmsh-refined .vtk mesh, it is only about an eighth of the size of its parent.  Its smaller size suggests the region of the parent proto-element which needs attention.</span>
+          </div>
+        </div>
+      <img src="images/0307.png" style="position:absolute; left:405px; top:1204px; width:368px; height:312px; background:none; " id="img_7269154c" alt="" title="" />
+      <div style="position:absolute; left:49px; top:1213px; width:242px; height:249px; background:none; " id="text_6dece81b">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Starting at the pin end, we replace the section walls of the arm with regularly spaced ones, whose edges are planar. The profiles are created from knife cuts. Evenly spaced divisions not only look better, they speed up the face creation process.</span>
+          </div>
+        </div>
+      <img src="images/0308.png" style="position:absolute; left:451px; top:1646px; width:324px; height:314px; background:none; " id="img_4e60c97e" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1653px; width:272px; height:243px; background:none; " id="text_7d8c0420">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Highlighted in the picture at right is an element in the inside fillet area of the pin end, which has a relatively low quality rating, even though all of its 2D angles appear reasonable to us. We carve off the chunk shown, convert it into a separate object, and perform smoothing on the stubborn element as well as others in its vicinity. Tinkering must be restricted to faces which do not define the exterior. After a number of iterations, we find the elements in the area to be improved to a satisfactory degree.</span>
+          </div>
+        </div>
+      <img src="images/0309.png" style="position:absolute; left:281px; top:1983px; width:494px; height:423px; background:none; " id="img_1e9d99ef" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1991px; width:212px; height:273px; background:none; " id="text_1a89f430">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Here we are at the inside fillet area of the crank end. The green pattern of faces, which starts at the pin end, propagates all the way until it reaches the flat plane of the crank split. Meanwhile, the orange pattern diverges, curves around the inside fillet area, and terminates at the zero Y mirror plane.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:2447px; width:222px; height:242px; background:none; " id="text_13be948d">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Blenbridge sometimes has trouble with objects that have been mirrored in Blender, even leaving some holes. Here we resort to separating the pieces before removing doubles, and eliminating all the duplicated faces (highlighted) on the new half before co-locating the mating points. This should be considered the best practice for non-manifold mirroring in Blender.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:59px; top:2785px; width:153px; height:133px; background:none; " id="text_494a6936">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final quality test finds a minimum value of 0.525 for Scaled Jacobian, which is acceptable according to Verdict standards.</span>
+          </div>
+        </div>
+      <img src="images/0312.png" style="position:absolute; left:202px; top:3428px; width:570px; height:313px; background:none; " id="img_486908c1" alt="" title="" />
+      <div style="position:absolute; left:50px; top:3432px; width:106px; height:155px; background:none; " id="text_2063fee4">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final mesh contains 6424 elements and 8501 nodes.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:37px; top:3915px; width:359px; height:40px; background:none; " id="text_700f791a">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
+          </div>
+        </div>
+      <img src="images/25_mirroring_delete_faces.png" style="position:absolute; left:322px; top:2447px; width:451px; height:303px; background:none; " id="img_6174824a" alt="" title="" />
+      <img src="images/27_sj_qual.png" style="position:absolute; left:265px; top:2786px; width:507px; height:293px; background:none; " id="img_3fffa953" alt="" title="" />
+      <img src="images/26_diag_qual.png" style="position:absolute; left:275px; top:3114px; width:497px; height:282px; background:none; " id="img_4a7be9cd" alt="" title="" />
+      <div style="position:absolute; left:50px; top:3114px; width:153px; height:133px; background:none; " id="text_5b6e5158">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The value of the Diagonal measure attribute, 0.656, is also acceptable.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

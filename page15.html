@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#0000FF; } 
+		a:visited { color:#0000FF; } 
+		a:active { color:#0000FF; } 
+		a:hover { color:#0000FF; } 
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:7800px; width:1000px;padding:0;  margin: 0;">
+<div style="text-align:left;">
+  <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+  <div style="position:absolute; left:403px; top:191px; width:150px; height:40px; background:none; " id="text_51784d86">
+    </div>
+  <div style="position:absolute; left:53px; top:0px; width:800px; height:7800px; background:none; " id="text_66e4fe8b">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:50px; top:100px; width:259px; height:906px; background:none; " id="text_1da514dc">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; text-decoration:underline; ">Demo 15</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>This object is a rigging hook; the model can be found in the INRIA model repository as an .obj file, and is imported into Blender with Blender &#8217; s .obj import script. Its title is &#8220;gancho&#8221; (See References). The usual Tris-to-Quads command is given, but there is no need for Partial Dissolve. From experience with this object, we decide to start from the left side and work towards the right.<br/><br/><br/><br/>The decision concerning which quad pattern to use is important. It should be flexible enough to adapt to cross sections of varying shapes, but should also be as simple as possible. We settle on a 3-division pattern with 2 segments. (The Preview nomenclature for divisions and segments is shown right.)<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>The hook&#8217;s ring and associated parts are identified right. We notice that originally the depiction of the ring is mere graphic shorthand; it has no real connection with the stem. Preview cannot make the chosen quad pattern in torus form, though it can as a cylinder. Shown right is the array which we created as a substitute ring. It needs to have a tee joint with the stem, which is not a trivial process.</span>
+          </div>
+        </div>
+      <img src="images/0221.png" style="position:absolute; left:329px; top:98px; width:442px; height:260px; background:none; " id="img_bce2501" alt="" title="" />
+      <img src="images/p068_2.png" style="position:absolute; left:328px; top:381px; width:197px; height:173px; background:none; " id="img_7b60245c" alt="" title="" />
+      <img src="images/0223.png" style="position:absolute; left:577px; top:381px; width:196px; height:286px; background:none; " id="img_6ea8743d" alt="" title="" />
+      <img src="images/p068_1.png" style="position:absolute; left:318px; top:689px; width:455px; height:317px; background:none; " id="img_70d2183e" alt="" title="" />
+      <img src="images/0226.png" style="position:absolute; left:563px; top:1070px; width:212px; height:511px; background:none; " id="img_6ce7c431" alt="" title="" />
+      <img src="images/0225.png" style="position:absolute; left:396px; top:1070px; width:152px; height:74px; background:none; " id="img_56002843" alt="" title="" />
+      <img src="images/0227.png" style="position:absolute; left:50px; top:1275px; width:337px; height:243px; background:none; " id="img_11679a48" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1075px; width:283px; height:176px; background:none; " id="text_6dfa24f3">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Regarding the array for the ring, we use the bezier circle method of making it. Which variable gets the relative offset, and which Deformation Axis is chosen, are things we determine experimentally, though the rotation of the starting slice seems to have something to do with it.</span>
+          </div>
+        </div>
+      <img src="images/0229.png" style="position:absolute; left:451px; top:1605px; width:324px; height:332px; background:none; " id="img_11832243" alt="" title="" />
+      <img src="images/0230.png" style="position:absolute; left:284px; top:1852px; width:148px; height:85px; background:none; " id="img_32ea1502" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1598px; width:330px; height:179px; background:none; " id="text_6ef5689f">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The way we make the stem and hilt is worth mentioning. We lengthen the stem by the thickness of the hilt using the Edges Only method. Then selecting the outer faces, we use the Vertex Normals flavor of extrude to extend the new hilt to the proper diameter. This is as close as we can get Blender to oblige our needs; it still remains for us to fill in some internal faces in the hilt.</span>
+          </div>
+        </div>
+      <img src="images/0231.png" style="position:absolute; left:359px; top:1975px; width:413px; height:291px; background:none; " id="img_9a2f929" alt="" title="" />
+      <img src="images/0232.png" style="position:absolute; left:359px; top:2267px; width:307px; height:95px; background:none; " id="img_45286c53" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1975px; width:252px; height:229px; background:none; " id="text_30618bd0">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">If we want to make sure that all elements in a mesh we create are actually present, we can do a flythrough in Gmsh, using the shrinking factor in the mesh options dialog. Shown is half of the tee we create to tie the ring to the stem.A similar process can be achieved in Paraview by using the Shrink filter.</span>
+          </div>
+        </div>
+      <img src="images/0233.png" style="position:absolute; left:322px; top:2389px; width:450px; height:328px; background:none; " id="img_423e072a" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2389px; width:251px; height:265px; background:none; " id="text_791326b0">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">In making the tee, we do the square core first, using a split mesh to save work. At the far right of the picture can be seen the central grid we used for Knife Projecting the juncture of the toroidal array (everything else being hidden at the time). We are able to check the quality of the partially finished piece and report it to be good. This picture anticipates things a bit; it is not time to join things back together yet.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:2738px; width:258px; height:111px; background:none; " id="text_57594168">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The middle layer is finished. A little late, but we realize that we have symmetry across the z-axis as well as the y-axis, allowing the mesh to be split again, thus saving more time in creating the last layer.</span>
+          </div>
+        </div>
+      <img src="images/0234.png" style="position:absolute; left:446px; top:2740px; width:326px; height:203px; background:none; " id="img_3471ce01" alt="" title="" />
+      <img src="images/0235.png" style="position:absolute; left:362px; top:2967px; width:411px; height:375px; background:none; " id="img_54d0cbe2" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2970px; width:289px; height:272px; background:none; " id="text_2bc9fe8a">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The ring and stem assembly in finished form is shown right. The quality was improved somewhat by grooming a few elements. The Paraview Extract Selection filter used on top of the Mesh Quality filter yielded a bounding box which we used to locate the low quality element in Blender.With the quad design chosen and the tricky stem assembly out of the way, we can go on to the serpentine gancho body.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:3365px; width:274px; height:523px; background:none; " id="text_6cb933aa">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Knife Project cuts are made to extract better section loops than those initially available, and at a later stage we will make a second series of cuts. <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>At the centroid of each loop we place  an empty. Each empty identifies the location of a control point in a single bezier curve. The bezier curve will govern the behavior of an array, which will advance the progress of a group (or parcel) of elements.</span>
+          </div>
+        </div>
+      <img src="images/0236.png" style="position:absolute; left:332px; top:3364px; width:442px; height:287px; background:none; " id="img_51f99368" alt="" title="" />
+      <img src="images/0237.png" style="position:absolute; left:333px; top:3672px; width:442px; height:256px; background:none; " id="img_2b3db28c" alt="" title="" />
+      <div style="position:absolute; left:50px; top:3962px; width:333px; height:233px; background:none; " id="text_45550c7">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The task before us would seem to lend itself to either a Bridge strategy or a Loft strategy, as contained in the Loop Tools Add-On menu, accessed by the &#8216;w&#8217; key. Even the possibility of using Shrinkwrap occurs.<br/><br/>However, the code structure of all these functions protect them against use with non-manifold meshes. Therefore we must resort to a less automated strategy.  </span>
+          </div>
+        </div>
+      <img src="images/p072_1.png" style="position:absolute; left:50px; top:4240px; width:503px; height:352px; background:none; " id="img_2460ed6e" alt="" title="" />
+      <img src="images/0238.png" style="position:absolute; left:565px; top:3959px; width:210px; height:454px; background:none; " id="img_571b4c88" alt="" title="" />
+      <img src="images/p072_2.png" style="position:absolute; left:566px; top:4435px; width:210px; height:224px; background:none; " id="img_5faa1773" alt="" title="" />
+      <div style="position:absolute; left:50px; top:4693px; width:711px; height:159px; background:none; " id="text_71c50d12">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Above is seen the Preview cylinder in the role of an array object subject to the bezier curve. On this occasion we do not try to rotate the array object, and the Deformation Axis and Relative Offset seen in the Modifier panel reflect this. The object Origin is automatically set at the geometrical centroid of the array as it will appear, after Applying. It is necessary to use the &#8216;g&#8217; key to adjust the position of the array, until it lines up at its beginning and end points. Note that we have left the Merge function unchecked, because it readily creates triangles. The consequence is that when reconciling sections we will have to remove lots of doubles.<br/><br/>Because of its suggestive shape, we will refer to the precursor array as the &#8216;slinky&#8217;.</span>
+          </div>
+        </div>
+      <img src="images/0241.png" style="position:absolute; left:18px; top:4862px; width:750px; height:236px; background:none; " id="img_7c354a4e" alt="" title="" />
+      <div style="position:absolute; left:50px; top:5122px; width:335px; height:298px; background:none; " id="text_67f37397">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The slinky sections are shown above, with the first showing a special edge. Each section will be equipped with such an edge, and they will make cutters. At right is seen the set of cutters ready to slice a fresh gancho.<br/><br/>As the gancho has already been cut once, it may seem wasteful to cut it again. However, we feel this is the only way to locate precisely.<br/><br/>Below: Reconciling a section. We can scale and grab, so long as we restore the plane. </span>
+          </div>
+        </div>
+      <img src="images/0242.png" style="position:absolute; left:407px; top:5119px; width:368px; height:312px; background:none; " id="img_503581d2" alt="" title="" />
+      <img src="images/0244.png" style="position:absolute; left:359px; top:5456px; width:417px; height:338px; background:none; " id="img_798038f2" alt="" title="" />
+      <img src="images/0243.png" style="position:absolute; left:50px; top:5456px; width:293px; height:350px; background:none; " id="img_392a1197" alt="" title="" />
+      <div style="position:absolute; left:50px; top:5845px; width:224px; height:66px; background:none; " id="text_3618d30e">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">At right is seen the mesh configuration after we have combined 13 sections.</span>
+          </div>
+        </div>
+      <img src="images/0245.png" style="position:absolute; left:294px; top:5843px; width:481px; height:392px; background:none; " id="img_162cf7b2" alt="" title="" />
+      <div style="position:absolute; left:50px; top:6116px; width:221px; height:422px; background:none; " id="text_7d97ccc3">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Pictures below: 1. Joining the ring assembly to the gancho. With the quad designs on opposite sides of the joint at different scaling, unpleasantness could arise if the faces are in-plane with each other. Instead, we move the two objects apart a small distance before joining and doing the sewing. 2. The tapered area is collapsed once a successful tie-in has been made. 3. The imported Febio Preview sphere has 3 divisions and 2 segments, but unlike a cylinder, the divisions are not necessarily equal in size. 4. The hemisphere is sewn into the tip area of the gancho.</span>
+          </div>
+        </div>
+      <img src="images/p074_2.png" style="position:absolute; left:625px; top:6261px; width:149px; height:285px; background:none; " id="img_59ecbc94" alt="" title="" />
+      <img src="images/p074_1.png" style="position:absolute; left:293px; top:6261px; width:304px; height:285px; background:none; " id="img_7ec2b6a7" alt="" title="" />
+      <img src="images/p074_3.png" style="position:absolute; left:122px; top:6571px; width:297px; height:209px; background:none; " id="img_7eea444d" alt="" title="" />
+      <img src="images/p074_4_1024x740.png" style="position:absolute; left:448px; top:6571px; width:288px; height:209px; background:none; " id="img_e09eb27" alt="" title="" />
+      <div style="position:absolute; left:43px; top:6848px; width:187px; height:282px; background:none; " id="text_6c2e7525">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The mesh quality according to Verdict&#8217;s Scaled Jacobian standard (right) is acceptable, as is that of the Diagonal measure (below). The mesh has 5760 elements and 6694 nodes. If refined one time in Gmsh, it would have 46,080 elements and 49,687 nodes (green).</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:7701px; width:359px; height:30px; background:none; " id="text_7ec2f275">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
+          </div>
+        </div>
+      <img src="images/35_sj_qual.png" style="position:absolute; left:235px; top:6846px; width:537px; height:285px; background:none; " id="img_f1669e6" alt="" title="" />
+      <img src="images/36_diag_qual.png" style="position:absolute; left:50px; top:7165px; width:477px; height:259px; background:none; " id="img_36cb1c14" alt="" title="" />
+      <img src="images/37_gmsh_portrait.png" style="position:absolute; left:419px; top:7468px; width:351px; height:228px; background:none; " id="img_22ca3bc8" alt="" title="" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

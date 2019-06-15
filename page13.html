@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#0000FF; } 
+		a:visited { color:#0000FF; } 
+		a:active { color:#0000FF; } 
+		a:hover { color:#0000FF; } 
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:6000px; width:1000px;padding:0;  margin: 0;">
+<div style="text-align:left;">
+  <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+  <div style="position:absolute; left:403px; top:191px; width:150px; height:40px; background:none; " id="text_3f487594">
+    </div>
+  <div style="position:absolute; left:53px; top:0px; width:800px; height:5990px; background:none; " id="text_9edd8f6">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:50px; top:100px; width:265px; height:158px; background:none; " id="text_df2c823">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; text-decoration:underline; ">Demo 13</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>This object is a fan; the model can be found in the INRIA model repository as a .3ds file, and is imported into Blender with Blender &#8217; s .3ds import script. Its title is &#8220;fan_1&#8221; (See References). </span>
+          </div>
+        </div>
+      <img src="images/0184.png" style="position:absolute; left:440px; top:115px; width:338px; height:280px; background:none; " id="img_516501ea" alt="" title="" />
+      <img src="images/0185.png" style="position:absolute; top:430px; left:0px; right:0px; margin-left:auto; margin-right:auto; width:564px; height:212px; background:none; " id="img_5647adf4" alt="" title="" />
+      <div style="position:absolute; top:662px; left:0px; right:0px; margin-left:auto; margin-right:auto; width:567px; height:53px; background:none; " id="text_49c56d3a">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">For us, the most interesting things about the fan are its blades. The blade thickness is constant, but the edges are not aligned to a major axis, they run perpendicular to the top and bottom surfaces of the blades.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:745px; width:300px; height:209px; background:none; " id="text_30422970">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We will suppose that more detail is desired in the shape of the blade edge outlines, and we will undertake an interpolation process to provide it. We start by adding a bezier circle to the scene, and hide all but one fan blade, eliminating its bottom surface.</span>
+          </div>
+        </div>
+      <img src="images/0186.png" style="position:absolute; left:372px; top:745px; width:407px; height:285px; background:none; " id="img_4d31c33f" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1054px; width:341px; height:585px; background:none; " id="text_5f67cf61">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">In Blender, curves are a separate system from normal block mesh, and must be dealt with appropriately. The top surface of the blade has 23 vertices. We use the &#8216;w&#8217; (special) menu to subdivide the bezier circle into 16 parts. We can subdivide between any two control points to cover the last 7 vertices. We will snap each control point to a vertex. The procedure is as follows, with EM designating Edit Mode and OM designating Object Mode. (We assume that the 3D cursor has been selected as pivot point.)<br/><br/>1. OM. Select the mesh.2. EM. Select a vertex. Use Shift + &#8216;s&#8217;, then &#8216;u&#8217; to snap the 3D-cursor to the selected vertex.3. OM. Select the curve.4. EM. Select a control point. Use Shift + &#8216;s&#8217;, then &#8216;t&#8217; to snap the control point to the 3D-cursor (and to the desired vertex).5. OM. Select the mesh again.<br/><br/><br/><br/>With the above procedure all vertices in the surface can be supplied with control points of the bezier circle. The view right is a top view snapshot as the final control point is assigned. We see that some smoothing of the edge outline will result from using the curve to rebuild the blade.<br/><br/><br/><br/><br/>The assumed starting alignment is that defined in the Object Mode &#8216;v&#8217; menu, with the Automatic setting. Some adjustment of control handles improves the form of the curve. (This is still a top view.)</span>
+          </div>
+        </div>
+      <img src="images/0187.png" style="position:absolute; left:466px; top:1049px; width:314px; height:308px; background:none; " id="img_603767f" alt="" title="" />
+      <img src="images/0188.png" style="position:absolute; left:436px; top:1376px; width:344px; height:241px; background:none; " id="img_5376e9e" alt="" title="" />
+      <img src="images/0189.png" style="position:absolute; left:436px; top:1637px; width:344px; height:173px; background:none; " id="img_392c893c" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1850px; width:199px; height:98px; background:none; " id="text_4dd60405">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">From some arbitrary perspective it can be see that the Automatic control point setting generally follows the path of vertices well.</span>
+          </div>
+        </div>
+      <img src="images/0190.png" style="position:absolute; left:309px; top:1830px; width:471px; height:116px; background:none; " id="img_390e2984" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2028px; width:246px; height:81px; background:none; " id="text_34b17f57">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">At this point the mesh surface can be deleted. In Object Mode we convert the curve to a mesh, using the Alt + &#8216;c&#8217; menu.</span>
+          </div>
+        </div>
+      <img src="images/0191.png" style="position:absolute; left:331px; top:1966px; width:448px; height:251px; background:none; " id="img_6003b071" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2237px; width:231px; height:272px; background:none; " id="text_1b724e5d">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Conditions contained in the pictures: 1. On entering Edit Mode we find many superfluous vertices have been created. The Limited Dissolve command reduces these to a manageable number. 2. We reduce the Max Angle field from 5 degrees to 2 degrees to preserve a few more vertices than retained by the default 5 degrees. 3. Then simply pressing &#8216;f&#8217; gives a big common n-gon. 4. The n-gon retains the warp of the original surface.</span>
+          </div>
+        </div>
+      <img src="images/p061_1.png" style="position:absolute; left:330px; top:2238px; width:448px; height:136px; background:none; " id="img_ef4a769" alt="" title="" />
+      <img src="images/p061_2.png" style="position:absolute; left:330px; top:2374px; width:448px; height:141px; background:none; " id="img_1f24343e" alt="" title="" />
+      <img src="images/p061_3.png" style="position:absolute; left:330px; top:2515px; width:448px; height:134px; background:none; " id="img_42286b4f" alt="" title="" />
+      <img src="images/p061_4.png" style="position:absolute; left:330px; top:2649px; width:448px; height:88px; background:none; " id="img_4d191ec6" alt="" title="" />
+      <img src="images/0196.png" style="position:absolute; left:403px; top:2736px; width:375px; height:199px; background:none; " id="img_1d99e9b8" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2764px; width:220px; height:161px; background:none; " id="text_384049ad">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Using the knife tool, we create a pattern of faces. Because of the rapid change of surface contour, all changes in vertex positions are accomplished by sliding, not by grabbing.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:2967px; width:247px; height:238px; background:none; " id="text_220ca182">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">After the mesh meets minimum quality requirements for Scaled Jacobian, we delete all but the primary surface. That surface is duplicated (so that a bottom face will be left behind when the duplicated face moves in its intended extrusion path). Then the Extrude Individual command is pressed in the Toolbox panel. That command has the advantage of extruding in a normal direction, the main thing we need. </span>
+          </div>
+        </div>
+      <img src="images/0199.png" style="position:absolute; left:401px; top:3288px; width:375px; height:279px; background:none; " id="img_203a3bda" alt="" title="" />
+      <div style="position:absolute; left:50px; top:3288px; width:255px; height:230px; background:none; " id="text_6bb43660">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The Extrude Individual command has another nice quality: it extrudes edges as well as faces (unlike the Extrude Region command). This saves a great deal of time. However, there is one drawback to the command, which is that it does not keep vertices integrated with those in neighboring edges. The highly zoomed view right shows  the result of this shortcoming. Here corners of elements overlap. Elsewhere there may be gaps.</span>
+          </div>
+        </div>
+      <img src="images/0200.png" style="position:absolute; left:340px; top:3612px; width:435px; height:302px; background:none; " id="img_39fbfba2" alt="" title="" />
+      <div style="position:absolute; left:50px; top:3612px; width:260px; height:306px; background:none; " id="text_6e79728">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We solve the vertex dislocation problem by inspecting the mesh for the shortest legitimate edge, then setting the Remove Doubles dialog for a distance shorter than this. Then we select all and Remove Doubles. This merges most vertex sites, but it still proves necessary to scout out the new surface and join a few cases of multiple vertices. <br/><br/>A test  of the Remove Doubles command shows that, when faced with determining the location of a group of points, Blender does not calculate the centroid, but rather chooses one point as the winning location. This is not what we would consider the ideal behavior.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:3960px; width:238px; height:248px; background:none; " id="text_7fdd1cb3">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">When working on quality improvement, we run a repeated circuit through Paraview, Blender, Blenbridge, and Gmsh. Tweaking little by little, we attempt to improve one or a few elements at a time. The thin elements of the fan blade make getting a satisfactory Diagonal score challenging, although the low number of total elements makes subdividing the mesh unnecessary.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:4246px; width:231px; height:255px; background:none; " id="text_3e82dc7">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">At right is shown the final snapshot of Scaled Jacobian quality. It meets the Verdict  standard.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:53px; top:4610px; width:206px; height:158px; background:none; " id="text_6acb35f7">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The view at right shows the final evaluation of Diagonal measure, which also meets Verdict standards.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:4912px; width:311px; height:192px; background:none; " id="text_4d099a64">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final mesh contains 434 elements and 999 nodes. For a finer treatment, Gmsh could easily subdivide it, which would yield 3472 elements and 5601 nodes.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:5237px; width:359px; height:40px; background:none; " id="text_4cee2439">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
+          </div>
+        </div>
+      <img src="images/35_blend_xray.png" style="position:absolute; left:342px; top:2963px; width:435px; height:284px; background:none; " id="img_77b764d8" alt="" title="" />
+      <img src="images/36_working_on_qual.png" style="position:absolute; left:339px; top:3960px; width:435px; height:250px; background:none; " id="img_64b656e5" alt="" title="" />
+      <img src="images/32_diag_qual.png" style="position:absolute; left:355px; top:4246px; width:419px; height:310px; background:none; " id="img_7b672672" alt="" title="" />
+      <img src="images/33_the_real_diag_qual.png" style="position:absolute; left:354px; top:4603px; width:420px; height:266px; background:none; " id="img_da1c9ae" alt="" title="" />
+      <img src="images/34_gmsh_portrait.png" style="position:absolute; left:384px; top:4912px; width:389px; height:273px; background:none; " id="img_58be145d" alt="" title="" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

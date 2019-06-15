@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#0000FF; } 
+		a:visited { color:#0000FF; } 
+		a:active { color:#0000FF; } 
+		a:hover { color:#0000FF; } 
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:4000px; width:1000px;padding:0;  margin: 0;">
+<div style="text-align:left;">
+  <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+  <div style="position:absolute; left:403px; top:191px; width:150px; height:40px; background:none; " id="text_7fc8751b">
+    </div>
+  <div style="position:absolute; left:53px; top:0px; width:800px; height:4000px; background:none; " id="text_44152f60">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:50px; top:100px; width:341px; height:252px; background:none; " id="text_67d8ae12">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; text-decoration:underline; ">Demo 12</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>This object is a ring gear; the model can be found in the INRIA model repository as an .obj file, and is imported into Blender with Blender &#8217; s .obj import script. Its title is &#8220;Y7923&#8221; (See References). The Limited Dissolve command is ineffective on such a simple model. An object like this is often divided when stresses are analyzed; however, in this case we will assume that we want to look at the whole object at once.</span>
+          </div>
+        </div>
+      <img src="images/0174.png" style="position:absolute; left:410px; top:111px; width:367px; height:296px; background:none; " id="img_2af3c9ad" alt="" title="" />
+      <div style="position:absolute; left:244px; top:427px; width:252px; height:202px; background:none; " id="text_64feb33e">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Fifty equally sized inside edges make a circle with diameter of 400. Everything is deleted except a generating plate. Member quads are created which contain the best-sized angles, which happens to make a very simple design. It includes two inside edges, so we will need to call for 25 array instances.We will use a different array modifier technique than we used in Demo 11. </span>
+          </div>
+        </div>
+      <img src="images/0175.png" style="position:absolute; left:512px; top:427px; width:266px; height:311px; background:none; " id="img_2ed68a52" alt="" title="" />
+      <img src="images/0176.png" style="position:absolute; left:50px; top:637px; width:206px; height:138px; background:none; " id="img_1503f21f" alt="" title="" />
+      <img src="images/0177.png" style="position:absolute; left:265px; top:788px; width:515px; height:162px; background:none; " id="img_1fac06a5" alt="" title="" />
+      <div style="position:absolute; left:50px; top:788px; width:203px; height:177px; background:none; " id="text_7c8d9c3c">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We extrude the plate to get a generating chunk. The object origin has remained at the world center, where the 3D cursor is also located. <br/><br/>We add an empty there as well, in Object mode, using the above menu.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:254px; top:1025px; width:285px; height:274px; background:none; " id="text_542acab3">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The Object panel for the empty is shown right. It is necessary to parent the empty to the chunk before assigning the array modifier to the chunk. The empty is pre-rotated according to the needs of the generating body (the chunk). Since the array rotation is desired around the z-axis, it would seem logical to rotate the empty around this axis. However, we rotate the empty around the axis which produces the desired orientation of generation, determined by experiment, and in this case it turns out to be the y-axis. (The sign on the rotation of the empty does not seem to matter.)</span>
+          </div>
+        </div>
+      <img src="images/0178.png" style="position:absolute; left:543px; top:1024px; width:234px; height:366px; background:none; " id="img_65c1df42" alt="" title="" />
+      <div style="position:absolute; left:254px; top:1406px; width:266px; height:187px; background:none; " id="text_3ce6bb64">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The Modifier panel for the chunk is shown right. The offset method that is chosen is Object Offset, as we see. The Merge and First Last checkboxes are intended to provide continuity and avoid doubles. However, at the end of the operation the Remove Doubles command still removes eight doubles.</span>
+          </div>
+        </div>
+      <img src="images/0179.png" style="position:absolute; left:543px; top:1406px; width:234px; height:389px; background:none; " id="img_5d744d49" alt="" title="" />
+      <img src="images/0180.png" style="position:absolute; left:50px; top:1605px; width:378px; height:340px; background:none; " id="img_3eee62e2" alt="" title="" />
+      <div style="position:absolute; left:466px; top:1843px; width:242px; height:91px; background:none; " id="text_2ac8f2e1">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The generated ring after the Apply button has been pressed is shown left in Edit mode. However, it is not strictly necessary to press the Apply button.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:2003px; width:344px; height:110px; background:none; " id="text_7e74dced">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We go on to export the mesh. If for some reason we did not wish to officially Apply the array modifier, we could still export all the generated geometry by selecting the Apply Modifiers checkbox in the export panel. On the other hand, if the Apply button has been pressed, there is no need to mark the checkbox.</span>
+          </div>
+        </div>
+      <img src="images/0181.png" style="position:absolute; left:560px; top:2006px; width:214px; height:119px; background:none; " id="img_5b1822b7" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2170px; width:179px; height:148px; background:none; " id="text_14c6b1d6">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final mesh achieves a satisfactory score for Scaled Jacobian (right) as well as for Diagonal measure (below).  It contains 1350 nodes and 600 elements.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:2980px; width:359px; height:40px; background:none; " id="text_7b7b16f5">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
+          </div>
+        </div>
+      <img src="images/13_alternate_sj_qual.png" style="position:absolute; left:243px; top:2170px; width:531px; height:370px; background:none; " id="img_455f659f" alt="" title="" />
+      <img src="images/12_diag_qual.png" style="position:absolute; left:300px; top:4000px; width:369px; height:0px; background:none; " id="img_7ff8c789" alt="" title="" />
+      <img src="images/12_diag_qual.png" style="position:absolute; left:50px; top:2494px; width:479px; height:424px; background:none; " id="img_4df4f27" alt="" title="" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

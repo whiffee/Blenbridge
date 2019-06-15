@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#0000FF; } 
+		a:visited { color:#0000FF; } 
+		a:active { color:#0000FF; } 
+		a:hover { color:#0000FF; } 
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:3000px; width:1000px;padding:0;  margin: 0;">
+<div style="text-align:left;">
+  <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+  <div style="position:absolute; left:403px; top:191px; width:150px; height:40px; background:none; " id="text_9e1def3">
+    </div>
+  <div style="position:absolute; left:53px; top:0px; width:800px; height:2900px; background:none; " id="text_52ee68b9">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:50px; top:100px; width:218px; height:231px; background:none; " id="text_73614d28">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; text-decoration:underline; ">Demo 19</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>This object is a cooler head; the model can be found in the INRIA model repository as a .mesh file, and is opened in Gmsh. It is saved as a .stl file and imported into Blender. Its title is &#8220;Ghs3dDS,&#8221; (See References). The usual Tris-to-Quads and Partial Dissolve commands are given.The pipes and body are both of single element thickness.</span>
+          </div>
+        </div>
+      <img src="images/0290.png" style="position:absolute; left:307px; top:97px; width:465px; height:277px; background:none; " id="img_520e664c" alt="" title="" />
+      <img src="images/0291.png" style="position:absolute; left:308px; top:398px; width:465px; height:356px; background:none; " id="img_193f8526" alt="" title="" />
+      <div style="position:absolute; left:50px; top:399px; width:240px; height:339px; background:none; " id="text_21df2213">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We separate the pipes, cut the mesh in half, and remove the bottom surface. The Tris-to-Quads command does not remove all the triangles, and we finish the operation, edge-sliding the vertices and using the knife tool. Now that we have a single layer, of manifold mesh, we can try using the Shrinkwrap modifier to conform it to the contour of the original surface. The view shown is of both surfaces, after the modifier has been applied. In the case of this model, insufficient quad density limits the usefulness of shrinkwrapping.</span>
+          </div>
+        </div>
+      <img src="images/0292.png" style="position:absolute; left:277px; top:780px; width:497px; height:245px; background:none; " id="img_46d37b01" alt="" title="" />
+      <div style="position:absolute; left:50px; top:787px; width:210px; height:231px; background:none; " id="text_27714a1d">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">To get the new bottom surface, we Extrude Individual to maintain a normal extrusion direction. The surface curvature is great enough to preclude using the Remove Doubles command to join the separated vertices on the bottom surface, and we must resort to merging the vertices by hand.<br/></span>
+          </div>
+        </div>
+      <img src="images/0293.png" style="position:absolute; left:281px; top:1048px; width:493px; height:283px; background:none; " id="img_3c23f219" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1056px; width:205px; height:239px; background:none; " id="text_56608bef">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Using the edges lining the penetration, we extrude a new pipe along the z-axis.<br/><br/>At this time we rebuild the lower flange of the body.</span>
+          </div>
+        </div>
+      <img src="images/0294.png" style="position:absolute; left:330px; top:1354px; width:444px; height:317px; background:none; " id="img_13992f32" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1367px; width:203px; height:147px; background:none; " id="text_159fd2c4">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We use the Region (Vertex Normal) command to extrude the outer circle of vertical faces and thus construct the pipe flange.</span>
+          </div>
+        </div>
+      <img src="images/0295.png" style="position:absolute; left:160px; top:1588px; width:148px; height:85px; background:none; " id="img_4790cf17" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1736px; width:222px; height:243px; background:none; " id="text_6c05386e">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final mesh meets Verdict standards for the Scaled Jacobian criterion.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:2131px; width:159px; height:139px; background:none; " id="text_54aad162">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final quality is also acceptable according to the Verdict  standard for Diagonal measure.</span>
+          </div>
+        </div>
+      <img src="images/0298.png" style="position:absolute; left:228px; top:2465px; width:543px; height:317px; background:none; " id="img_41b44412" alt="" title="" />
+      <div style="position:absolute; left:51px; top:2484px; width:166px; height:146px; background:none; " id="text_334c4efe">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final mesh contains 2001 elements and 4185 nodes.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:2815px; width:359px; height:40px; background:none; " id="text_1d21187f">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
+          </div>
+        </div>
+      <img src="images/12_sj_qual.png" style="position:absolute; left:383px; top:1736px; width:389px; height:333px; background:none; " id="img_39d385" alt="" title="" />
+      <img src="images/13_diag_qual.png" style="position:absolute; left:383px; top:2131px; width:389px; height:278px; background:none; " id="img_67a9f5d3" alt="" title="" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
