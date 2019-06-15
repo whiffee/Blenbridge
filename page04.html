@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#0000FF; } 
+		a:visited { color:#0000FF; } 
+		a:active { color:#0000FF; } 
+		a:hover { color:#0000FF; } 
+	.auto-style1 {
+	font-size: xx-small;
+}
+.auto-style2 {
+	font-size: x-small;
+}
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:10600px; width:1000px;padding:0px 40px 0px 40px; margin: 0 481 0 0;">
+<div style="text-align:left;">
+  <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+  <div style="position:absolute; left:443px; top:191px; width:150px; height:40px; background:none; " id="text_38f8edd">
+    </div>
+  <div style="position:absolute; left:93px; top:0px; width:800px; height:10550px; background:none; " id="text_7f04dcb7">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:50px; top:100px; width:189px; height:297px; background:none; " id="text_2c55cf93">
+        <div style="text-align:left;">
+          <span style="font-family:Charter; color:#000000; text-decoration:underline; " class="auto-style2">Demo 4</span>
+          <span style="font-family:Charter; color:#000000; " class="auto-style2"><br/><br/>This object is a hinge.  The .stl file of this object is obtained from the Elmer GUI samples folder (see References), and imported into Blender.<br/><br/>This demo has more step-by-step comments than the others in this</span><span style="font-family:Charter; color:#000000; " class="auto-style1"> document.</span><span class="auto-style1">
+			</span>
+          </div>
+        </div>
+      <img src="images/0023.png" style="position:absolute; left:249px; top:116px; width:502px; height:277px; background:none; " id="img_75eeee4f" alt="" title="" />
+      <div style="position:absolute; left:50px; top:456px; width:302px; height:6256px; background:none; " id="text_15d4d079">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">We first select a vertical edge, press Shift + &#8216;d&#8217; (Duplicate), then &#8216;p&#8217;  (Separate) the edge into a separate object. We use the Knife Project command by selecting a random edge in Edit mode which will be used for cutting and modifying it so that from a chosen viewpoint it cuts as we wish. Then in Object mode we select first the cutter then the mesh.  Then back in Edit mode we cut the model exactly in half vertically. We apply the Alt + &#8216;j&#8217; command to turn some of the triangles into quads. <br/><br/>We cut horizontally at a convenient place to isolate the leaf section from the knuckle section, using  a randomly selected and modified horizontal edge as cutter. The knuckle section we place on a separate layer temporarily. <br/><br/><br/><br/><br/><br/><br/><br/>We select the surface edges and use the Mesh &#8594; Clean Up &#8594; Limited Dissolve command at default strength to eliminate the selected edges, leaving only a couple left after the command has finished.<br/><br/><br/><br/><br/>We note down the z-axis thickness of the leaf (5.0) and then delete all but the top layer of faces (plus hole bevels).<br/><br/><br/><br/><br/>We reduce the hole divisions from 36 to 18 by merging points. We then use the Knife command by pressing &#8216;k&#8217;. We divide up the surface into faces with reasonably sized angles. We review the angle sizes using the Angle checkbox under the Mesh Display section of the &#8216;n&#8217; properties panel. For mesh quality purposes we generally try to keep all angles less than 130 degrees and greater than 40 degrees, with no two angles in a face differing by more than 75 degrees.<br/><br/><br/>Now we do our first extrusion. We select all the faces with the boundary selection command. We then change the mode to edge select, the selected edges showing selection glow. Then we press Alt + &#8216;e&#8217;, followed by  selection of &#8216;Edges Only.&#8217; Then we enter &#8216;-.37983 z&#8217; and press Return. The edges extrude downward by .37983 units, as shown in picture 1, an underside view. Next we select the 3D cursor as pivot point, picture 2. Now we switch to point select mode and select one of the lower inside hole points, as in picture 3, and then we press Shift + &#8216;s&#8217;, followed by &#8216;u&#8217; to send the 3D cursor to the selected point. <br/><br/>We then take a front view by pressing &#8216;1&#8217;. We go into wire frame mode by pressing &#8216;z&#8217;. We boundary select all the points below the top surface, as in picture 4. We now use the circle select command, &#8216;c&#8217;, along with the Shift key, to deselect the innermost points in the holes, as in picture 5. Next we press &#8216;s&#8217; (Scale) + &#8216;z&#8217; + &#8216;0&#8217;, and then press Return. <br/><br/>All the points except those which were not selected jump to the 3D cursor z-position,  which is .37983 units below the top surface, as seen in picture 6. <br/><br/>Our next task is to cover the newly extruded edges with faces. We take a front view, &#8216;1&#8217;, and go into wire frame mode, &#8216;z&#8217;, and into edge select mode.<br/><br/>We have extruded the first level of the leaf section. To create the other five levels is similar and simpler. We put the mesh into front view with &#8216;1&#8217;, go into wire frame mode with &#8216;z&#8217;, go into face select mode, and carefully select the bottom layer of faces. Then we fall back to edge select mode and repeat the routine: 1. press Alt + &#8216;e&#8217;, 2. selection of option &#8216;Edges Only&#8217;, 3. enter &#8216;-.next-z + z&#8217; and 4. press Return, where &#8216;-.next-z&#8217; represents the next value in the sequence: -.95431, -.90227, -.82596, -.72743, and -.60934. <br/><br/>This results in something like picture 9, which is a skirt of faces with only the first two horizontal levels populated with faces. The next task then is to put in the horizontal layers. We do this with a slight variation on the routine just used. <br/><br/>We select the bottom layer of faces, as in picture 10, (or picture 11, using &#8216;Limit Selection&#8217; button) with the face dots confirming which layer has the faces. Then we use the command Shift + &#8216;d&#8217; (Duplicate) to duplicate the face layer. We immediately enter the distance of movement and the axis, and press Return. For example, the first is &#8216;-.95431 z&#8217;. If we make a numerical mistake, we will see too many layers of horizontal edges when we come out of wire frame mode. When we have finished, we select everything and Remove Doubles, finding that 535 doubles are removed. The degree of Verdict quality does not appear to be a potential issue with the leaf section, so we will not bother with doing that check. <br/><br/>Before moving on to the construction of the guide, there are five edge lengths we need to capture, as shown in picture 12. They turn out to be: 1.546, 3.458, 4.991, 7.005,  and 8, as revealed by Edge info: Length, under Mesh Display in the &#8216;n&#8217; properties panel.<br/><br/>We start with the edge outline of the guide that was cut with the dividing knife, seen in picture 13. We first make an n-gon, using &#8216;f&#8217; (Face), then use the knife tool to cut it into horizontal faces. <br/><br/>These we extrude horizontally along the x-axis using the edge lengths found above, as shown in picture 14, so that they will match the edges of the leaf. We add vertical layers of faces exactly as we added the horizontal layers before, by duplication. When we remove doubles, Blender reports the removal of 70 doubles.<br/><br/>There is one serious concern about the guide, which is the extreme angles on its lowest faces, as seen in picture 15. Two angles violate all three of the rules we mentioned before about angle quality. So we have to take time to check out the quality of the guide.<br/><br/>We open the resulting .vtk in Paraview, the GUI of which is shown in picture 19, with arrows at labels of interest. We apply the Mesh Quality filter, dial the Hex Quality Measure spinner button down to Scaled Jacobian, click the Show and Rescale buttons under Coloring, and find the circumstance shown in picture 20.<br/><br/>According to the Verdict quality assessment system embodied in the Paraview Mesh Quality filter, elements with a Scaled Jacobian score between 0.5 and 1.0 are acceptable.The guide has surprisingly good quality for its poor angles, and shows a minimum quality level of 0.619. We speculate that the nice flat sides compensate for the poor angles.<br/><br/>It is time to move on to the knuckle. The knuckle end plate which is adjacent to the guide we now duplicate and put on a new layer. We eliminate triangles by hand, making angles as favorable as possible. As picture 21 shows, the outline is in no way extreme and the angles do not give difficulty. <br/><br/>Picture 22 shows the worst angles. The x-value of the end we are working on is 34.5, which means there are two horizontal extrusions to be accomplished. We do these just as we did for the guide.<br/><br/>It remains to assemble the hinge. We put the three subassemblies on the same layer and join them. After joining, it is necessary to check the points involved to make sure they are sound. Picture 23 shows an unsound one immediately. We can see that for this selected point, the selected point &#8216;edge glow&#8217; does not extend from the leaf side to the guide side, as it should.<br/><br/>We take a top view, &#8216;7&#8217;, and in point select mode we boundary select and hide all points which are not on the join boundary between leaf and guide. We go into wire frame mode and take any convenient perspective. Then we select each point, clicking on it at least twice. The first time it may glow in all directions, but on the second click it may go dead, as shown for the point in picture 24. Indeed, it would be surprising if they were not all half dead. For each one so found, we &#8216;c&#8217;, circle select around it and merge the points. Note that is only works in wire frame mode, or in the mode governed by the button with Tooltip, &#8220;Limit selection to visible&#8221;, shown in picture 25. At the boundary plane between guide and knuckle, we repeat the process of verifying soundness of points, though this boundary does have a curve.<br/><br/>Our next task is to check the quality of the assembly, using the same steps as when we checked the guide quality. We find that  Verdict calculations give the subassembly a score of 0.619, the same as the guide achieved earlier. With this value determined, we can go on to the mirroring.<br/><br/>The division cut runs along the y-axis, but we want to mirror around global x. Before mirroring, we select a base point on the mesh and send the 3D cursor there to anchor the action. Then we Shift + &#8216;d&#8217; (Duplicate) the mesh and perform the mirroring on the still-selected duplicate. After the mirroring, we select everything and Remove doubles. Blender reports the removal of 147 doubles.<br/><br/><br/><br/><br/></span>
+          </div>
+        </div>
+      <img src="images/p009_1.png" style="position:absolute; left:387px; top:462px; width:365px; height:182px; background:none; " id="img_40bb7d8e" alt="" title="" />
+      <img src="images/0025.png" style="position:absolute; left:388px; top:662px; width:365px; height:209px; background:none; " id="img_60c5f54d" alt="" title="" />
+      <img src="images/0026.png" style="position:absolute; left:387px; top:889px; width:182px; height:136px; background:none; " id="img_24975831" alt="" title="" />
+      <img src="images/0027.png" style="position:absolute; left:568px; top:889px; width:184px; height:136px; background:none; " id="img_703d3ecd" alt="" title="" />
+      <img src="images/0028.png" style="position:absolute; left:434px; top:1043px; width:248px; height:121px; background:none; " id="img_1ecbcdda" alt="" title="" />
+      <img src="images/0029.png" style="position:absolute; left:384px; top:1182px; width:368px; height:269px; background:none; " id="img_735523b7" alt="" title="" />
+      <img src="images/p010_1.png" style="position:absolute; left:374px; top:1489px; width:378px; height:128px; background:none; " id="img_31851547" alt="" title="" />
+      <img src="images/p010_2.png" style="position:absolute; left:374px; top:1638px; width:46px; height:35px; background:none; " id="img_126e9b8d" alt="" title="" />
+      <img src="images/p010_3.png" style="position:absolute; left:429px; top:1639px; width:323px; height:168px; background:none; " id="img_55dd37a6" alt="" title="" />
+      <img src="images/p010_4.png" style="position:absolute; left:378px; top:1826px; width:375px; height:51px; background:none; " id="img_118ce0fd" alt="" title="" />
+      <img src="images/p010_5.png" style="position:absolute; left:378px; top:1897px; width:375px; height:160px; background:none; " id="img_cd703e5" alt="" title="" />
+      <img src="images/p010_6.png" style="position:absolute; left:375px; top:2077px; width:378px; height:149px; background:none; " id="img_2f7d4cc2" alt="" title="" />
+      <img src="images/p010_7.png" style="position:absolute; left:376px; top:2245px; width:377px; height:35px; background:none; " id="img_438b31ac" alt="" title="" />
+      <img src="images/p010_8.png" style="position:absolute; left:377px; top:2300px; width:377px; height:216px; background:none; " id="img_3acd4090" alt="" title="" />
+      <img src="images/p011_1.png" style="position:absolute; left:379px; top:2577px; width:375px; height:191px; background:none; " id="img_277d1a69" alt="" title="" />
+      <img src="images/p011_2.png" style="position:absolute; left:487px; top:2786px; width:268px; height:300px; background:none; " id="img_2f5d2350" alt="" title="" />
+      <img src="images/p011_3.png" style="position:absolute; left:389px; top:3068px; width:34px; height:34px; background:none; " id="img_3a450b36" alt="" title="" />
+      <img src="images/p011_4.png" style="position:absolute; left:388px; top:3103px; width:368px; height:226px; background:none; " id="img_53673b65" alt="" title="" />
+      <img src="images/p011_5.png" style="position:absolute; left:382px; top:3347px; width:375px; height:194px; background:none; " id="img_77fe316a" alt="" title="" />
+      <img src="images/p012_1.png" style="position:absolute; left:603px; top:3609px; width:153px; height:183px; background:none; " id="img_5a2ff840" alt="" title="" />
+      <img src="images/p012_2.png" style="position:absolute; left:382px; top:3810px; width:375px; height:177px; background:none; " id="img_e03aab1" alt="" title="" />
+      <img src="images/p012_3.png" style="position:absolute; left:382px; top:4004px; width:375px; height:216px; background:none; " id="img_2fe437b8" alt="" title="" />
+      <img src="images/p012_4.png" style="position:absolute; left:513px; top:4237px; width:244px; height:179px; background:none; " id="img_3f80b89b" alt="" title="" />
+      <img src="images/p012_6.png" style="position:absolute; left:512px; top:4416px; width:244px; height:179px; background:none; " id="img_1fcf6aec" alt="" title="" />
+      <img src="images/p012_5.png" style="position:absolute; left:361px; top:4486px; width:103px; height:107px; background:none; " id="img_1de17642" alt="" title="" />
+      <img src="images/p013_1.png" style="position:absolute; left:386px; top:4630px; width:371px; height:405px; background:none; " id="img_5bc26c58" alt="" title="" />
+      <img src="images/p013_2.png" style="position:absolute; left:382px; top:5050px; width:375px; height:258px; background:none; " id="img_783f3472" alt="" title="" />
+      <img src="images/p014_1.png" style="position:absolute; left:384px; top:5358px; width:375px; height:323px; background:none; " id="img_259d4d8f" alt="" title="" />
+      <img src="images/p014_2.png" style="position:absolute; left:384px; top:5697px; width:375px; height:243px; background:none; " id="img_257ae156" alt="" title="" />
+      <img src="images/p014_3.png" style="position:absolute; left:384px; top:5958px; width:375px; height:231px; background:none; " id="img_991b189" alt="" title="" />
+      <img src="images/p015_1.png" style="position:absolute; left:385px; top:6238px; width:375px; height:155px; background:none; " id="img_4cff2a18" alt="" title="" />
+      <img src="images/p015_2.png" style="position:absolute; left:367px; top:6496px; width:55px; height:48px; background:none; " id="img_730dc4c6" alt="" title="" />
+      <img src="images/0054.png" style="position:absolute; left:385px; top:6831px; width:375px; height:236px; background:none; " id="img_6b7265a9" alt="" title="" />
+      <img src="images/0055.png" style="position:absolute; top:7102px; left:0px; right:0px; margin-left:auto; margin-right:auto; width:629px; height:292px; background:none; " id="img_6dd09b37" alt="" title="" />
+      <div style="position:absolute; top:7419px; left:0px; right:0px; margin-left:auto; margin-right:auto; width:629px; height:122px; background:none; " id="text_5397caad">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Using the process described so far in this demo, we create a mesh with a slightly different face pattern. The 18,676 faces of this final mesh require 65 seconds for Blenbridge to convert to .vtk.  The final totals are 5556 elements and 7888 nodes.<br/><br/>Shown above is the Mesh Quality filter view in Paraview, which evaluates the mesh. With a minimum of 0.619 for all the elements, the mesh scores within the Verdict standard.</span>
+          <span style="font-size:11pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+          </div>
+        </div>
+      <img src="images/0056.png" style="position:absolute; left:456px; top:7545px; width:311px; height:241px; background:none; " id="img_66daea72" alt="" title="" />
+      <div style="position:absolute; left:50px; top:9716px; width:344px; height:574px; background:none; " id="text_279ef3b7">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Here we offer a few edge tricks.<br/><br/>1. A fundamental geometry-creation step in Blender is splitting an edge. The keyboard steps for the selected edge are Ctrl+ &#8216;e&#8217;, followed by &#8217;s&#8217;. Both halves remain selected, and if in this state the command is repeated, both edges will be split, allowing quick division into 2, 4, 8, or 16 pieces, as required.<br/><br/><br/>2. Sliding a selected point along an edge is Shift + &#8216;v&#8217;. But to extend the end point of an edge,  make sure that the pivot point is &#8216;Active Element&#8217;. Then first select the point to be stretched, then its base point, then &#8216;s&#8217; (Scale).<br/><br/><br/><br/><br/><br/><br/><br/>3. Using the same pivot point as 2, but creating a new edge with the same direction as the original. After selecting the first point, press Shift + &#8216;d&#8217; (Duplicate). Then press Escape to keep the new point from wandering. Then select the base point, press &#8216;s&#8217; (Scale), and position the new point with its </span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; font-weight:bold; ">inherited directionality</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">. Now the point can be connected with the last end point with the &#8216;f&#8217; (Face) command to create new geometry.</span>
+          </div>
+        </div>
+      <img src="images/0057.png" style="position:absolute; left:553px; top:9735px; width:205px; height:169px; background:none; " id="img_6217ac29" alt="" title="" />
+      <img src="images/0058.png" style="position:absolute; left:419px; top:9924px; width:102px; height:42px; background:none; " id="img_58bdd13d" alt="" title="" />
+      <img src="images/0059.png" style="position:absolute; left:528px; top:9924px; width:232px; height:182px; background:none; " id="img_f43907a" alt="" title="" />
+      <img src="images/0337.png" style="position:absolute; left:538px; top:10125px; width:222px; height:192px; background:none; " id="img_2b0efa90" alt="" title="" />
+      <div style="position:absolute; left:70px; top:10340px; width:277px; height:40px; background:none; " id="text_2d975726">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:7586px; width:316px; height:140px; background:none; " id="text_576ee591">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">If the mesh is saved in Gmsh as a .msh file, it can be loaded into Elmer. Elmer will not attempt to remesh it. Saved in Gmsh as a .inp file, it can be used in Calculix or Febio.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:30px; top:7820px; width:672px; height:62px; background:none; " id="text_60c435ca">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Although the Verdict test for Scaled Jacobian is a useful one, we get the sense that it may be a bit too lenient on the trait of element shape. For the mesh shown in the last  picture, we therefore run a test on all 19 Verdict attributes covered by the Paraview mesh quality filter.</span>
+          </div>
+        </div>
+      <img src="images/p200_1_qual_table.png" style="position:absolute; left:24px; top:7899px; width:750px; height:612px; background:none; " id="img_5b19b59a" alt="" title="" />
+      <div style="position:absolute; left:28px; top:8540px; width:744px; height:45px; background:none; " id="text_33042be1">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The table shows that the initial mesh has 6 of 17 categories satisfied, or a raw measure of 35 percent of the available categories. We will consider the categories of Diagonal and Distortion.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:8609px; width:252px; height:211px; background:none; " id="text_33251acc">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">By requesting an additional Layout in Paraview, choosing a Spreadsheet Layout, and then using normal spreadsheet highlighting functions, the non-compliant elements can be captured with an Extract Selection filter and displayed. <br/><br/>The picture at right shows the 90 elements which do not initially meet the Verdict standards for Diagonal.</span>
+          </div>
+        </div>
+      <img src="images/44_poor_diagonal_qual.png" style="position:absolute; left:349px; top:8609px; width:424px; height:285px; background:none; " id="img_282c87da" alt="" title="" />
+      <div style="position:absolute; left:50px; top:8929px; width:262px; height:153px; background:none; " id="text_467a8d93">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The picture at right shows the 150 elements which do not initially meet the Verdict standards for Distortion. It is interesting that the sharp-edged row of elements at the base of the guide meets both Diagonal and Distortion criteria without any alteration.</span>
+          </div>
+        </div>
+      <img src="images/45_poor_annotated.png" style="position:absolute; left:349px; top:8921px; width:424px; height:286px; background:none; " id="img_7dc472de" alt="" title="" />
+      <img src="images/46_gmsh_portrait.png" style="position:absolute; left:241px; top:9235px; width:532px; height:319px; background:none; " id="img_12d6bde9" alt="" title="" />
+      <div style="position:absolute; left:50px; top:9232px; width:183px; height:316px; background:none; " id="text_7df99058">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">After reworking, both Diagonal and Distortion tests yield acceptable results. The other scores can be seen in the above table.<br/><br/>Reworking increased the element count by 760, and the node count by 808.<br/><br/>The actual required level of quality of any attribute  depends on the particular course of analysis being employed.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
