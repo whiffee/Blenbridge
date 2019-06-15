@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="generator" content="Website Painter">
+	<title></title>
+	<style type="text/css">
+		a { color:#0000FF; } 
+		a:visited { color:#0000FF; } 
+		a:active { color:#0000FF; } 
+		a:hover { color:#0000FF; } 
+	</style>
+</head>
+<body style="background-color:#FFFFFF; height:7200px; width:1000px;padding:0;  margin: 0;">
+<div style="text-align:left;">
+  <span style="font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; "><br/></span>
+  <div style="position:absolute; left:403px; top:191px; width:150px; height:40px; background:none; " id="text_ebf09be">
+    </div>
+  <div style="position:absolute; left:53px; top:0px; width:800px; height:5500px; background:none; " id="text_762a5bef">
+    <div style="text-align:left;">
+      <div style="position:absolute; left:50px; top:100px; width:263px; height:244px; background:none; " id="text_46abebbb">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; text-decoration:underline; ">Demo 8</span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; "><br/><br/>This object is a specialized pipe fitting. It resides in the INRIA model repository as a .3ds file, and is imported into Blender with Blender ' s .3ds import script. Its title is &#8220;DEMO10&#8221; (See References). We apply the mesh command Tris to Quads and then Limited Dissolve at a level of 8 degrees.</span>
+          </div>
+        </div>
+      <img src="images/0102.png" style="position:absolute; left:384px; top:131px; width:381px; height:351px; background:none; " id="img_24aa993" alt="" title="" />
+      <div style="position:absolute; left:50px; top:511px; width:256px; height:236px; background:none; " id="text_2b3cddcc">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">In a top wireframe view we get an &#8216;x-ray&#8217; look at the model. The perpendicularity of the geometry checks out good, but the quad angles of the faces making up the horizontal pipe are irregular and the horizontal pipe will be rebuilt. Notice that in the model as shown both i.d. and o.d. of the horizontal tube penetrate. However, for finite element mesh purposes it is not necessary for the o.d. to do so. </span>
+          </div>
+        </div>
+      <img src="images/0103.png" style="position:absolute; left:429px; top:506px; width:336px; height:285px; background:none; " id="img_7c45660f" alt="" title="" />
+      <div style="position:absolute; left:50px; top:816px; width:244px; height:110px; background:none; " id="text_cc5df77">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">An early version of the &#8216;hat&#8217; plate is shown. Where symmetry exists, mirroring saves work.</span>
+          </div>
+        </div>
+      <img src="images/0104.png" style="position:absolute; left:436px; top:814px; width:330px; height:243px; background:none; " id="img_53cf876a" alt="" title="" />
+      <div style="position:absolute; left:50px; top:1076px; width:256px; height:278px; background:none; " id="text_305ed015">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Our main challenge will be building the mesh in the area of the horizontal penetration. Of the 24 divisions in the horizontal pipe section, some will be incorporated vertically, and some horizontally. The elements in the vertical tube wall are divided repeatedly to adapt the area of integration in way of the penetration. </span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:1451px; width:218px; height:493px; background:none; " id="text_37d1cedc">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">New circles are made and saved separately. It is necessary for the circles to be separate objects in order to use the Knife Project tool. Also, before cutting the inner surfaces, it may be necessary to hide the new faces created by the OD cutting circle in order to give the ID cutting circle &#8220;room to work&#8221;. The floating set of circles will be joined and eventually form the boundary end of the horizontal pipe. Before that happens, they make useful reference shapes, frequently referred to by pressing the &#8216;1&#8217; key to see the front view.</span>
+          </div>
+        </div>
+      <img src="images/0106.png" style="position:absolute; left:277px; top:1452px; width:490px; height:493px; background:none; " id="img_24d89d86" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2015px; width:255px; height:356px; background:none; " id="text_146bfd94">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">As an experiment, we make two single elements in Blender with the same general  body taper of 28 degrees. One element is a wedge with a nose, and the other a diamond. Gmsh splits them into four. Then we view their Scaled Jacobian values in Paraview. Notice the disparity of scores. The option of installing a nose is worth remembering for those situations in which it will work</span>
+          <span style="font-size:11pt; font-family:Arial, Helvetica, sans-serif; color:#000000; ">.</span>
+          </div>
+        </div>
+      <img src="images/0121.png" style="position:absolute; left:432px; top:1984px; width:337px; height:207px; background:none; " id="img_27cb59a4" alt="" title="" />
+      <img src="images/0122.png" style="position:absolute; left:432px; top:2191px; width:337px; height:189px; background:none; " id="img_5d844d7d" alt="" title="" />
+      <img src="images/p038_1a.png" style="position:absolute; left:31px; top:2839px; width:750px; height:410px; background:none; " id="img_4846ea70" alt="" title="" />
+      <img src="images/p038_1b.png" style="position:absolute; left:30px; top:3249px; width:752px; height:364px; background:none; " id="img_2ac01e4" alt="" title="" />
+      <div style="position:absolute; left:31px; top:3649px; width:750px; height:109px; background:none; " id="text_6985cc71">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The various extrusion steps are summarized. In comparison to the work associated with meshing the penetration area, the extrusions are negligible in terms of the time they require. Note that the coordinate numbers are all extremely small. Blender can work comfortably on a very small scale, if the model happens to be so constructed. However, it can have undesirable repercussions, for example when removing doubles.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:3800px; width:175px; height:460px; background:none; " id="text_58559391">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The model at the time of the start of the extrusion steps is shown.<br/><br/>The double arc of quads which forms the base will serve for two extrusion steps, the outer elements becoming deselected when the upper extrusion is performed. <br/><br/>Note that we choose to save final mirroring until last. However, it is not necessary to do it this way.</span>
+          </div>
+        </div>
+      <img src="images/p039_1.png" style="position:absolute; left:227px; top:3800px; width:541px; height:459px; background:none; " id="img_494122af" alt="" title="" />
+      <div style="position:absolute; left:50px; top:5000px; width:359px; height:40px; background:none; " id="text_2dfe1680">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
+          </div>
+        </div>
+      <img src="images/108_top_view.png" style="position:absolute; left:377px; top:1087px; width:388px; height:338px; background:none; " id="img_325db47a" alt="" title="" />
+      <img src="images/snap_to_cyl_dupe.png" style="position:absolute; left:348px; top:2431px; width:431px; height:303px; background:none; " id="img_43b4a94f" alt="" title="" />
+      <div style="position:absolute; left:50px; top:2433px; width:286px; height:345px; background:none; " id="text_26cda9dd">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">At right is shown the quarter cylinder detail in way of the lower half of the pipe penetration. (Here light gray in color.) The interior diameter of the body circle (red) has been extruded to form a check curve, and the points of the workpiece i.d. are snapped to it to insure fidelity of location.<br/><br/>The 24-division circle geometry convention yields actual radii, in this case, varying between 0.02132 and 0.0215, due to the &#8216;flats&#8217; and &#8216;corners&#8217; of the circle. As it is not possible to follow the abrupt bends in the template surface exactly when constructing freeform elements, the valid canon will be to maintain all points within the range of the radii noted above.<br/><br/>More details about using snapping in Blender will be given in Demo 22.</span>
+          </div>
+        </div>
+      <div style="position:absolute; left:50px; top:4325px; width:175px; height:161px; background:none; " id="text_23588786">
+        <div style="text-align:left;">
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">The final mesh meets the Verdict quality standards for both Scaled Jacobian (right) as well as for Diagonal measure (below).The final mesh contains 4094 elements and 6466 nodes.</span>
+          </div>
+        </div>
+      <img src="images/109_qual_cum_protrait.png" style="position:absolute; left:393px; top:4326px; width:375px; height:293px; background:none; " id="img_5bcf6d98" alt="" title="" />
+      <img src="images/102_diagonal.png" style="position:absolute; left:50px; top:4591px; width:419px; height:296px; background:none; " id="img_7c729cb" alt="" title="" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
