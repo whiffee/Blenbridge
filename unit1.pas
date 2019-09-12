@@ -1,6 +1,6 @@
-{  Blenbridge version 1.18
+{  Blenbridge version 1.20
    written by Gary Bollenbach
-   September 11, 2018
+   September 11, 2019
 
 
 ***** BEGIN GPL LICENSE BLOCK *****
@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  MaskEdit, ExtCtrls, Math, IniFiles, SynEdit;
+  MaskEdit, ExtCtrls, Menus, Math, IniFiles, SynEdit, LCLintf, StrUtils;
 
 type
 
@@ -42,35 +42,66 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
-    Button4: TButton;
-    Button5: TButton;
-    Button6: TButton;
     Button7: TButton;
     Button8: TButton;
-    CheckBox1: TCheckBox;
+    Image1: TImage;
     Label1: TLabel;
-    Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    MainMenu1: TMainMenu;
     MaskEdit1: TMaskEdit;
     MaskEdit2: TMaskEdit;
+    Memo1: TMemo;
+    Memo2: TMemo;
     Memo3: TMemo;
+    MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
+    MenuItem11: TMenuItem;
+    MenuItem13: TMenuItem;
+    MenuItem16: TMenuItem;
+    MenuItem17: TMenuItem;
+    MenuItem18: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
     OpenDialog1: TOpenDialog;
+    Panel1: TPanel;
+    Panel2: TPanel;
     SaveDialog1: TSaveDialog;
+    StaticText1: TStaticText;
     SynEdit1: TSynEdit;
     Timer1: TTimer;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
-    procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure MenuItem10Click(Sender: TObject);
+    procedure MenuItem11Click(Sender: TObject);
+    procedure MenuItem12Click(Sender: TObject);
+    procedure MenuItem13Click(Sender: TObject);
+    procedure MenuItem14Click(Sender: TObject);
+    procedure MenuItem15Click(Sender: TObject);
+    procedure MenuItem16Click(Sender: TObject);
+    procedure MenuItem17Click(Sender: TObject);
+    procedure MenuItem18Click(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
+    procedure MenuItem5Click(Sender: TObject);
+    procedure MenuItem6Click(Sender: TObject);
+    procedure MenuItem7Click(Sender: TObject);
+    procedure MenuItem8Click(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
     procedure PlyWriteVtk(Sender: TObject);
     function GetToken(aString, SepChar: string; TokenNum: Byte): string;
     function Anglesep(x1, y1, z1, x2, y2, z2: Double): double;
@@ -101,9 +132,10 @@ type
     { private declarations }
   public
     { public declarations }
-    mycurrentDir2, myvar3, myvar4, a1adj, a2adj, a3adj, a4adj : string;
+    mycurrentDir2, myvar3, myvar4, a1adj, a2adj, a3adj, a4adj, tempblob,
+    outfilename: string;
     numberofverts, numberoffaces, normalno, numberofcells, radfac,
-     ElapsedT, close1, F3, F, eightblobscounter, tbp : Integer;
+     ElapsedT, close1, F3, F, eightblobscounter, tbp, ww, hh : Integer;
      xside, yside, zside, sidecume, vertlistf, hopper1, wooda,
       Trigarray, Trigarray2, finalindex, blobsworth, dupecheck, oneedge,
      twoedge, dupes, dupe8, vertlists, luniverse, output, eightblobsl,
@@ -115,12 +147,13 @@ type
     longvec : array [0..3000000] of Double;
     curedgea1, eightblobs : array [0..5000000] of  String;
     opptemp : array [0..100] of String;
-    separray, septemp, copa, m1 : array [0..100] of Double;
+    separray, septemp, copa, m1 : array [0..102] of Double;
     {m1 is the array for objects: form, memo, button, label, checkbox, mask edit:
     fm1, m1, m3, b1, b2, b3, b4, b5, b6,
     la1, la2, la3, la4, cb1, me1, and the attributes H, W, L, T }
     fc : array [0..4] of Double;
     formsyze, inivaluef : Single;
+    vtkout, plyout : Boolean;
 
   end;
 
@@ -134,42 +167,21 @@ implementation
 { TForm1 }
 
 procedure TForm1.Button1Click(Sender: TObject);
-{var
-slash : Integer;  }
-
 begin
-  Label5.visible := false;
- if opendialog1.execute then
-    begin
-    myvar3:= opendialog1.filename;
-    SynEdit1.lines.LoadFromFile(myvar3);
-    end;
-
-    Memo3.Lines.Add(myvar3);
- {  slash := 0; }
+  Panel2.Visible := false;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-   if myvar3 <> '' then begin
-   Label5.visible := true;
-   Label5.Caption := 'Initializing ' ;
-   Application.ProcessMessages;
-   PlyWriteVtk(Sender);
-   end;
+   Memo2.Visible := false;
+   Button2.Visible := false;
 
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
 
 begin
-   Label5.visible := false;
-   savedialog1.FileName := myvar3;
-   if savedialog1.execute then
-    begin
-    myvar4 := savedialog1.filename;
-    output.SaveToFile(myvar4);
-  end;
+  Panel1.Visible := false;
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
@@ -181,130 +193,19 @@ begin
    FormDestroy(Sender);
 end;
 
-procedure TForm1.Button5Click(Sender: TObject);
-var
-  pic : Double;
-begin
-  {f}m1[0] := 474; m1[1] := 640; {se1}m1[2] := 296; m1[3] := 600;
-  m1[4] := 24; m1[5] := 144; m1[6] := 8;{m3}m1[12] := 48 ; m1[13] := 432;
-  m1[14] := 186; m1[15] := 72; m1[16] := 8; {b1}m1[17] := 25;
-  m1[18] := 82; m1[19] := 24; m1[20] := 32;
- {b2}m1[21] := 25; m1[22] := 42; m1[23] := 124; m1[24] := 32;
-  {b3}m1[25] := 25; m1[26] := 82; m1[27] := 244;
-  m1[28] := 32; {b4}m1[29] := 25; m1[30] := 82; m1[31] := 344;
-  m1[32] := 32; {b5}m1[33] := 25; m1[34] := 90; m1[35] := 444;
-  m1[36] := 32; {b6}m1[37] := 25; m1[38] := 42;
-  m1[39] := 184; m1[40] := 32; {la5}m1[45] := 24; m1[46] := 540;
-  m1[47] := 18; m1[48] := 0;{la2}m1[49] := 34; m1[50] := 31;
-  m1[51] := 24; m1[52] := 96;{cb1}m1[53] := 21 ; m1[54] := 21;
-  m1[55] := 24; m1[56] := 72;{me1}m1[57] := 22; m1[58] := 40;
-  m1[59] := 61; m1[60] := 72;{la3}m1[61] := 17; m1[62] := 45;
-  m1[63] := 62; m1[64] := 104;{la4}m1[65] := 24; m1[66] := 574;
-  m1[67] := 0; m1[68] := 450;{me2}m1[69] := 22; m1[70] := 60;
-  m1[71] := 116; m1[72] := 72;{la6}m1[73] := 17; m1[74] := 50;
-  m1[75] := 125; m1[76] := 104;{b7}m1[77] := 12; m1[78] := 15;
-  m1[79] := 575; m1[80] := 47;{b8}m1[81] := 12; m1[82] := 15;
-  m1[83] := 590; m1[84] := 47;{la1}m1[85] := 14; m1[86] := 60;
-  m1[87] := 568; m1[88] := 33;
-
-  {fc[0] := 0.7; fc[1] := 0.85; fc[2] := 1.0; fc[3] := 1.25; fc[4] := 1.5; }
-  fc[0] := 1.1; fc[1] := 1.3; fc[2] := 1.5; fc[3] := 1.7; fc[4] := 1.9;
-
-  if Button5.Caption = 'Size 3' then begin
-  Button5.Caption := 'Size 4';
-  pic := fc[3];
-  formsyze := 4.0;
-  end
-  else
-  if Button5.Caption = 'Size 4' then begin
-  Button5.Caption := 'Size 5';
-  pic := fc[4];
-  formsyze := 5.0;
-  end
-  else
-  if Button5.Caption = 'Size 5' then begin
-  Button5.Caption := 'Size 1';
-  pic := fc[0];
-  formsyze := 1.0;
-  end
-  else
-  if Button5.Caption = 'Size 1' then begin
-  Button5.Caption := 'Size 2';
-  pic := fc[1];
-  formsyze := 2.0;
-  end
-  else
-  if Button5.Caption = 'Size 2' then begin
-  Button5.Caption := 'Size 3';
-  pic := fc[2];
-  formsyze := 3.0;
-  end ;
-
-  begin
-  Form1.Height := Round(pic * m1[0]); Form1.Width := Round(pic * m1[1]);
-  SynEdit1.Height := Round(pic * m1[2]); SynEdit1.Width := Round(pic * m1[3]);
-  SynEdit1.Left := Round(pic * m1[4]); SynEdit1.Top := Round(pic * m1[5]);
-  Memo3.Height := Round(pic * m1[12]); Memo3.Width := Round(pic * m1[13]);
-  Memo3.Left := Round(pic * m1[14]); Memo3.Top := Round(pic * m1[15]);
-  Button1.Height := Round(pic * m1[17]); Button1.Width := Round(pic * m1[18]);
-  Button1.Left := Round(pic * m1[19]); Button1.Top := Round(pic * m1[20]);
-  Button2.Height := Round(pic * m1[21]); Button2.Width := Round(pic * m1[22]);
-  Button2.Left := Round(pic * m1[23]); Button2.Top := Round(pic * m1[24]);
-  Button3.Height := Round(pic * m1[25]); Button3.Width := Round(pic * m1[26]);
-  Button3.Left := Round(pic * m1[27]); Button3.Top := Round(pic * m1[28]);
-  Button4.Height := Round(pic * m1[29]); Button4.Width := Round(pic * m1[30]);
-  Button4.Left := Round(pic * m1[31]); Button4.Top := Round(pic * m1[32]);
-  Button5.Height := Round(pic * m1[33]); Button5.Width := Round(pic * m1[34]);
-  Button5.Left := Round(pic * m1[35]); Button5.Top := Round(pic * m1[36]);
-  Button6.Height := Round(pic * m1[37]); Button6.Width := Round(pic * m1[38]);
-  Button6.Left := Round(pic * m1[39]); Button6.Top := Round(pic * m1[40]);
-  Label5.Height := Round(pic * m1[45]); Label5.Width := Round(pic * m1[46]);
-  Label5.Left := Round(pic * m1[47]); Label5.Top := Round(pic * m1[48]);
-  Label2.Height := Round(pic * m1[49]); Label2.Width := Round(pic * m1[50]);
-  Label2.Left := Round(pic * m1[51]); Label2.Top := Round(pic * m1[52]);
-  CheckBox1.Height := Round(pic * m1[53]); CheckBox1.Width := Round(pic * m1[54]);
-  CheckBox1.Left := Round(pic * m1[55]); CheckBox1.Top := Round(pic * m1[56]);
-  MaskEdit1.Height := Round(pic * m1[57]); MaskEdit1.Width := Round(pic * m1[58]);
-  MaskEdit1.Left := Round(pic * m1[59]); MaskEdit1.Top := Round(pic * m1[60]);
-  Label3.Height := Round(pic * m1[61]); Label3.Width := Round(pic * m1[62]);
-  Label3.Left := Round(pic * m1[63]); Label3.Top := Round(pic * m1[64]);
-  Label4.Height := Round(pic * m1[65]); Label4.Width := Round(pic * m1[66]);
-  Label4.Left := Round(pic * m1[67]); Label4.Top := Round(pic * m1[68]);
-  MaskEdit2.Height := Round(pic * m1[69]); MaskEdit2.Width := Round(pic * m1[70]);
-  MaskEdit2.Left := Round(pic * m1[71]); MaskEdit2.Top := Round(pic * m1[72]);
-  Label6.Height := Round(pic * m1[73]); Label6.Width := Round(pic * m1[74]);
-  Label6.Left := Round(pic * m1[75]); Label6.Top := Round(pic * m1[76]);
-  Button7.Height := Round(pic * m1[77]); Button7.Width := Round(pic * m1[78]);
-  Button7.Left := Round(pic * m1[79]); Button7.Top := Round(pic * m1[80]);
-  Button8.Height := Round(pic * m1[81]); Button8.Width := Round(pic * m1[82]);
-  Button8.Left := Round(pic * m1[83]); Button8.Top := Round(pic * m1[84]);
-  Label1.Height := Round(pic * m1[85]); Label1.Width := Round(pic * m1[86]);
-  Label1.Left := Round(pic * m1[87]); Label1.Top := Round(pic * m1[88]);
-
-  SynEdit1.Font.Size := Round(pic * 6); Memo3.Font.Size := Round(pic * 6);
-  Button1.Font.Size := Round(pic * 7); Button2.Font.Size := Round(pic * 7);
-  Button3.Font.Size := Round(pic * 7); Button4.Font.Size := Round(pic * 7);
-  Button5.Font.Size := Round(pic * 7); Button6.Font.Size := Round(pic * 7);
-  Label5.Font.Size := Round(pic * 6); Label2.Font.Size := Round(pic * 6);
-  Label3.Font.Size := Round(pic * 6); MaskEdit1.Font.Size := Round(pic * 6);
-  Label4.Font.Size := Round(pic * 6);MaskEdit2.Font.Size := Round(pic * 6);
-  Label6.Font.Size := Round(pic * 6);Button7.Font.Size := Round(pic * 6);
-  Button8.Font.Size := Round(pic * 4);Label1.Font.Size := Round(pic * 3.5);
-  end;
-end;
-
 procedure TForm1.AdjustFont(Sender: TObject);
-var a : Integer;
+
 begin
   SynEdit1.Font.Size := SynEdit1.Font.Size  + tbp; Memo3.Font.Size := Memo3.Font.Size + tbp;
-  Button1.Font.Size := Button1.Font.Size  + tbp; Button2.Font.Size := Button2.Font.Size + tbp;
-  Button3.Font.Size := Button3.Font.Size  + tbp; Button4.Font.Size := Button4.Font.Size + tbp;
-  Button5.Font.Size := Button5.Font.Size  + tbp; Button6.Font.Size := Button6.Font.Size + tbp;
-  Label5.Font.Size := Label5.Font.Size  + tbp; Label2.Font.Size := Label2.Font.Size + tbp;
+  Memo1.Font.Size := Memo1.Font.Size  + tbp; Button2.Font.Size := Button2.Font.Size + tbp;
+  Button3.Font.Size := Button3.Font.Size  + tbp; StaticText1.Font.Size := StaticText1.Font.Size + tbp;
+   Button1.Font.Size := Button1.Font.Size + tbp;
+  Label5.Font.Size := Label5.Font.Size  + tbp;
   Label3.Font.Size := Label3.Font.Size  + tbp; MaskEdit1.Font.Size := MaskEdit1.Font.Size + tbp;
   Label4.Font.Size := Label4.Font.Size + tbp;MaskEdit2.Font.Size := MaskEdit2.Font.Size + tbp;
   Label6.Font.Size := Label6.Font.Size + tbp;Button7.Font.Size := Button7.Font.Size + tbp;
   Button8.Font.Size := Button8.Font.Size + tbp;Label1.Font.Size := Label1.Font.Size + tbp;
+  Memo2.Font.Size := Memo2.Font.Size + tbp;
 end;
 
 procedure TForm1.Button6Click(Sender: TObject);
@@ -341,10 +242,10 @@ begin
    close1 := close1 +1;
   { Button4.Color := clYellow;
    Button4.Color := $007E6E09; }
-   Button4.Color := RGBToColor(255, 251, 148);
+  { Button4.Color := RGBToColor(255, 251, 148);
    Button4.Font.Style := [fsBold];
-   Button4.Caption := 'Quit?';
-   if close1 = 2 then begin
+   Button4.Caption := 'Quit?';  }
+   if close1 = 1 then begin
    Halt(0);
    end;
 end;
@@ -356,20 +257,203 @@ begin
   Label5.Font.Color := clGreen;
   Timer1.enabled := false;
   close1 := 0;
+  hh := Screen.Height;
+  ww := Screen.Width;
+  Form1.Height := Round(hh/2);
+  Form1.Width := Round(ww/2);
+  Memo3.Height := Round(hh/22); Memo3.Width := Round(ww/2.055);
+  Memo3.Left := Round(ww/150); Memo3.Top := Round(hh/32);
+  SynEdit1.Height := Round(hh/2.9); SynEdit1.Width := Round(ww/2.055);
+  SynEdit1.Left := Round(ww/150); SynEdit1.Top := Round(hh/12);
+  Panel1.Height := Round(hh/6); Panel1.Width := Round(ww/8);
+  Panel1.Left := Round(hh/3.0); Panel1.Top := Round(hh/15);
+  Button3.Height := Round(hh/39); Button3.Width := Round(ww/26);
+  Button3.Left := Round(hh/14.5); Button3.Top := Round(hh/7.7);
+  MaskEdit2.Height := Round(hh/40); MaskEdit2.Width := Round(ww/35);
+  MaskEdit2.Left := Round(hh/40); MaskEdit2.Top := Round(hh/14);
+  Label6.Height := Round(hh/30); Label6.Width := Round(ww/25);
+  Label6.Left := Round(hh/45); Label6.Top := Round(hh/10);
+  Label1.Height := Round(hh/30); Label1.Width := Round(ww/25);
+  Label1.Left := Round(hh/9.5); Label1.Top := Round(hh/10);
+  Button8.Height := Round(hh/45); Button8.Width := Round(hh/45);
+  Button8.Left := Round(hh/6.5); Button8.Top := Round(hh/14);
+  Button7.Height := Round(hh/45); Button7.Width := Round(hh/45);
+  Button7.Left := Round(hh/9); Button7.Top := Round(hh/14);
+  Button1.Height := Round(hh/45); Button1.Width := Round(hh/15);
+  Button1.Left := Round(hh/11); Button1.Top := Round(hh/4);
+  MaskEdit1.Height := Round(hh/40); MaskEdit1.Width := Round(ww/35);
+  MaskEdit1.Left := Round(hh/40); MaskEdit1.Top := Round(hh/50);
+  Label3.Height := Round(hh/30); Label3.Width := Round(ww/25);
+  Label3.Left := Round(hh/45); Label3.Top := Round(hh/22);
+  Panel2.Height := Round(hh/3.5); Panel2.Width := Round(ww/6.5);
+  Panel2.Left := Round(hh/3.4); Panel2.Top := Round(hh/25);
+  Image1.Height := Round(hh/6); Image1.Width := Round(ww/5);
+  Image1.Left := Round(hh/25.5); Image1.Top := Round(hh/55);
+  StaticText1.Height := Round(hh/30); StaticText1.Width := Round(ww/5);
+  StaticText1.Left := Round(hh/20.2); StaticText1.Top := Round(hh/9.5);
+  Memo1.Height := Round(hh/12); Memo1.Width := Round(ww/5);
+  Memo1.Left := Round(hh/40); Memo1.Top := Round(hh/6.6);
+  Memo2.Height := Round(hh/2.5); Memo2.Width := Round(ww/2.055);
+  Memo2.Left := Round(ww/150); Memo2.Top := Round(hh/32);
+  Button2.Height := Round(hh/45); Button2.Width := Round(hh/8);
+  Button2.Left := Round(hh/2.9); Button2.Top := Round(hh/2.3);
+  Label5.Height := Round(hh/30); Label5.Width := Round(ww/2.5);
+  Label5.Left := Round(hh/2.5); Label5.Top := Round(hh/65);
+
+  SynEdit1.Font.Size := Round(ww/230);
+  Memo3.Font.Size := Round(ww/230);
+  Panel1.Font.Size := Round(ww/280);
+  MaskEdit1.Font.Size := Round(ww/300);
+  MaskEdit2.Font.Size := Round(ww/300);
+  Label6.Font.Size := Round(ww/310);
+  Label1.Font.Size := Round(ww/310);
+  Label3.Font.Size := Round(ww/310);
+  Button3.Font.Size := Round(ww/250);
+  Button1.Font.Size := Round(ww/250);
+  StaticText1.Font.Size := Round(ww/250);
+  Memo1.Font.Size := Round(ww/280);
+  Memo1.Font.Size := Round(ww/250);
+  Button2.Font.Size := Round(ww/250);
+  Label5.Font.Size := Round(ww/230);
+  Label4.Font.Size := Round(ww/230);
 
   myINI := TINIFile.Create(ExtractFilePath(Application.EXEName) +
   'blenbridge.ini');
 
-    inivaluef := myINI.ReadFloat('Settings','Form Size', 3.0);
+   { inivaluef := myINI.ReadFloat('Settings','Form Size', 3.0);
 
     if inivaluef = 2.0 then Button5.Caption := 'Size 1';
     if inivaluef = 3.0 then Button5.Caption := 'Size 2';
     if inivaluef = 4.0 then Button5.Caption := 'Size 3';
     if inivaluef = 5.0 then Button5.Caption := 'Size 4';
-    if inivaluef = 1.0 then Button5.Caption := 'Size 5';
+    if inivaluef = 1.0 then Button5.Caption := 'Size 5';   }
 
     myINI.Free;
-    Button5Click(Sender);
+    vtkout := false;
+    plyout := false;
+end;
+
+procedure TForm1.MenuItem10Click(Sender: TObject);
+begin
+  Panel1.Visible := true;
+end;
+
+procedure TForm1.MenuItem11Click(Sender: TObject);
+begin
+  Panel1.Visible := true;
+end;
+
+procedure TForm1.MenuItem12Click(Sender: TObject);
+begin
+  Panel1.Visible := true;
+end;
+
+procedure TForm1.MenuItem13Click(Sender: TObject);
+begin
+  Panel1.Visible := true;
+end;
+
+procedure TForm1.MenuItem14Click(Sender: TObject);
+begin
+  Panel1.Visible := true;
+end;
+
+procedure TForm1.MenuItem15Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.MenuItem16Click(Sender: TObject);
+begin
+  {  Label7MouseDown(Sender: TObject; Button: TMouseButton; Shift:
+  TShiftState; X, Y: Integer);}
+  OpenURL('https://blenbridge.sourceforge.io/');
+end;
+
+procedure TForm1.MenuItem17Click(Sender: TObject);
+begin
+  Panel2.Visible := true;
+end;
+
+procedure TForm1.MenuItem18Click(Sender: TObject);
+begin
+  Memo2.Visible := true;
+  Button2.Visible := true;
+end;
+
+procedure TForm1.MenuItem4Click(Sender: TObject);
+begin
+   Label5.visible := false;
+ if opendialog1.execute then
+    begin
+    myvar3:= opendialog1.filename;
+    SynEdit1.lines.LoadFromFile(myvar3);
+    end;
+
+    Memo3.Lines.Add(myvar3);
+end;
+
+procedure TForm1.MenuItem5Click(Sender: TObject);
+begin
+
+   if vtkout = true then begin
+   outfilename := AnsiReplaceStr(myvar3, 'ply', 'vtk');
+   end
+   else if plyout = true then begin
+   outfilename := AnsiReplaceStr(myvar3, 'vtk', 'ply');
+   end
+   else outfilename := myvar3;
+   Label5.visible := false;
+   {savedialog1.FileName := myvar3; }
+   savedialog1.FileName := outfilename;
+   if savedialog1.execute then
+    begin
+    myvar4 := savedialog1.filename;
+    output.SaveToFile(myvar4);
+  end;
+
+   plyout := false;
+   vtkout := false;
+end;
+
+procedure TForm1.MenuItem6Click(Sender: TObject);
+begin
+   FormDestroy(Sender);
+end;
+
+procedure TForm1.MenuItem7Click(Sender: TObject);
+begin
+   if myvar3 <> '' then begin
+   Label5.visible := true;
+   Label5.Caption := 'Initializing ' ;
+   Application.ProcessMessages;
+   PlyWriteVtk(Sender);
+   end;
+end;
+
+procedure TForm1.MenuItem8Click(Sender: TObject);
+begin
+   if myvar3 <> '' then
+  Label5.visible := true;
+  Application.ProcessMessages;
+  VtkWritePly(Sender);
+end;
+
+procedure TForm1.MenuItem9Click(Sender: TObject);
+begin
+ {No action required for this event;  merely setting the checkbox is
+ all that is required.
+ Because the check mark accompanying this item is so small, I decided to put
+ the following text notification in also. I tested it and found that, just
+ as desired, checking followed by unchecking (before execution) results in NO
+ field data being  written.}
+
+  if MenuItem9.Caption = 'Include field data' then
+   MenuItem9.Caption := 'Field data will be included'
+   else if
+   MenuItem9.Caption = 'Field data will be included' then
+   MenuItem9.Caption := 'Include field data';
+
 end;
 
 procedure TForm1.Timer1StartTimer(Sender: TObject);
@@ -489,7 +573,7 @@ begin
    F := 1;
 
    output.Add('# vtk DataFile Version 3.0');
-   output.Add('# created by Blenbridge 1.18: add *.vtk* by hand');
+   output.Add('# created by Blenbridge 1.20');
    output.Add('ASCII');
    output.Add('DATASET UNSTRUCTURED_GRID');
 
@@ -535,6 +619,7 @@ begin
    {Find out whether the .ply file stores tets or hexes. If tets, go to the
    appropriate procedure }
    tempStr := trim(SynEdit1.Lines[F]);
+
    if GetToken(tempStr, ' ', 1) = '3' then begin
    Ply3WriteVTK(Sender);
    end
@@ -931,11 +1016,13 @@ begin
 
       for e := 0 to Trigarray2.Count -1 do begin
       eightblobs[e] := Trim(Trigarray2[e]);
+
       end;
 
       end;  { for i := 0 to numberoffaces -1 do begin }
 
-      EnforceVerdictWinding(Sender);
+
+     { EnforceVerdictWinding(Sender); }
 
       {All the data have been generated at this point, and the i
       loop ends.}
@@ -1115,6 +1202,7 @@ begin
 
 
       numberofcells := blobsworth.Count;
+      EnforceVerdictWinding(Sender);
 
       GetCellDimensions(Sender);
 
@@ -1147,7 +1235,7 @@ begin
    for j := 1 to numberofcells do
    output.Add('12');
 
-    if CheckBox1.Checked = true then begin
+    if MenuItem9.Checked = true then begin
 
    output.Add(' ');
    output.Add('CELL_DATA ' + InttoStr(numberofcells));
@@ -1259,6 +1347,8 @@ begin
 
    Label5.Caption := 'Conversion complete ' ;
    Application.ProcessMessages;
+   plyout := false;
+   vtkout := true;
 
 
 end;
@@ -1281,6 +1371,10 @@ begin
    GetToken(tempStr, ' ', 4) + ' ');
    F := F + 1;
    until F = SynEdit1.Lines.Count {numberoffaces -i -2};
+
+  { for i := 0 to vertlistf.Count -1 do begin
+   Output.Add(vertlistf[i]);
+   end;  }
 
    {Fill 3 arrays centroid-x,-y,-z of doubles with the coordinates of the
    centroids of all the faces. Find the largest intra-face point-to-point
@@ -1340,7 +1434,7 @@ end;
 
 procedure TForm1.Searchfor3Edge(Sender: TObject);
 var a, i, k, s, e, d, b, c, t1, t2, t3, a1int,
-   a3int, a2int, otherone, closure, g : Integer;
+   a3int, a2int, otherone, closure : Integer;
    a1, a2, a3, concatp : String;
 
     pvol : Double;
@@ -1408,7 +1502,7 @@ begin
       {chk
       for k := 0 to Trigarray.Count -1 do
       output.Add('Trigarray[' + InttoStr(k) + '] ' + Trigarray[k]);
-      chk }
+      chk}
 
       for b := 0 to luniverse.Count -1 do begin
       if (AnsiPos(' ' + a2 + ' ', luniverse[b]) <> 0) then
@@ -1417,8 +1511,8 @@ begin
       oneedge.Add(luniverse[b]);
       end;
       end;
-     { for g := 0 to oneedge.Count -1 do
-      output.Add('oneedge[' + InttoStr(g) + '] ' + oneedge[g]); }
+      {for g := 0 to oneedge.Count -1 do
+      output.Add('oneedge[' + InttoStr(g) + '] ' + oneedge[g]);}
 
       for c := 0 to luniverse.Count -1 do begin
       if (AnsiPos(' ' + a3 + ' ', luniverse[c]) <> 0) then
@@ -1427,8 +1521,8 @@ begin
       twoedge.Add(luniverse[c]);
       end;
       end;
-     { for g := 0 to twoedge.Count -1 do
-      output.Add('twoedge[' + InttoStr(g) + '] ' + twoedge[g]);  }
+      {for g := 0 to twoedge.Count -1 do
+      output.Add('twoedge[' + InttoStr(g) + '] ' + twoedge[g]); }
 
        {=======================================================================}
       {Do the sleuthing. Ansipos works nicely to keep the middle section of
@@ -1476,10 +1570,10 @@ begin
        end; {for s := 0 to Trigarray.Count -1 do begin}
        end; {for i := 0 to vertlistf.Count -1 do begin}
 
-    {   for w := 0 to eightblobs3.Count -1 do
-        eightblobs[w] := (eightblobs3[w]);
-      for i := 0 to eightblobs3.Count -1 do
-      output.Add('****eightblobs ' + InttoStr(i) + ' ' + eightblobs[i]);}
+      { for w := 0 to eightblobs3.Count -1 do }
+       { eightblobs[w] := (eightblobs3[w]);
+      for i := 0 to eightblobs3.Count -1 do  }
+     { output.Add('****eightblobs3 ' + InttoStr(w) + ' ' + eightblobs3[w]);}
       Process3EightBlobs(Sender);
 
 end;
@@ -1664,6 +1758,8 @@ begin
    twoedge.Free;
 
    Timer1StopTimer(Sender);
+   plyout := false;
+   vtkout := true;
 
 end;
 
@@ -1825,7 +1921,7 @@ begin
    else if GetToken(tempStr, ' ', 1) = '4' then WritePly3Faces(Sender)
    else if GetToken(tempStr, ' ', 1) = '3' then WritePlyTri(Sender)
 
-   else Label5.Caption := 'Path choice error line 1828';
+   else Label5.Caption := 'Path choice error line 1924';
    end;
 
 
@@ -1967,6 +2063,20 @@ begin
       output.Add(vertlistf[i]);
       for j := 0 to blobsworth.Count -1 do
       output.Add('4' + blobsworth[j]);
+      for i := 0 to eightblobsf.Count -1 do begin
+      output.Add('3' + ' ' + GetToken(eightblobsf[i], ' ', 1) + ' ' +
+         GetToken(eightblobsf[i], ' ', 2) + ' ' +
+         GetToken(eightblobsf[i], ' ', 3));
+      output.Add('3' + ' ' + GetToken(eightblobsf[i], ' ', 1) + ' ' +
+         GetToken(eightblobsf[i], ' ', 3) + ' ' +
+         GetToken(eightblobsf[i], ' ', 4));
+      output.Add('3' + ' ' + GetToken(eightblobsf[i], ' ', 5) + ' ' +
+         GetToken(eightblobsf[i], ' ', 6) + ' ' +
+         GetToken(eightblobsf[i], ' ', 7));
+      output.Add('3' + ' ' + GetToken(eightblobsf[i], ' ', 6) + ' ' +
+         GetToken(eightblobsf[i], ' ', 7) + ' ' +
+         GetToken(eightblobsf[i], ' ', 8));
+      end;
 
       eightblobsl.Free;
       hopper1.Free;
@@ -1978,6 +2088,8 @@ begin
       Label5.Caption := 'Conversion complete ' ;
       Application.ProcessMessages;
       Timer1StopTimer(Sender);
+      vtkout := false;
+      plyout := true;
 
 
 end;
@@ -2168,6 +2280,8 @@ begin
       Label5.Caption := 'Conversion complete ' ;
       Application.ProcessMessages;
       Timer1StopTimer(Sender);
+      vtkout := false;
+      plyout := true;
 
 
   end;
@@ -2213,6 +2327,8 @@ begin
       Label5.Caption := 'Conversion complete ' ;
       Application.ProcessMessages;
       Timer1StopTimer(Sender);
+      vtkout := false;
+      plyout := true;
 
 
 end;
@@ -2480,75 +2596,70 @@ end;
 
 procedure TForm1.EnforceVerdictWinding(Sender: TObject);
 var q: Integer;
-  tempStr, cr  : String;
-  v1x, v1y, v1z, v2x, v2y, v2z, v3x, v3y, v3z, v6x, v6y, v6z,
-  w1x, w1y, w1z, w2x, w2y, w2z, upsubx, upsuby, upsubz,
-  upsubnorm, w8norm, du, dur, numer, normcrx, normcry, normcrz,
-  locv6x, locv6y, locv6z, normlocv : Double;
+  tempStr, cr, v0, v1, v2, v6  : String;
+  v1x, v1y, v1z, v2x, v2y, v2z, v0x, v0y, v0z, v6x, v6y, v6z,
+  w1x, w1y, w1z, w6x, w6y, w6z, w2x, w2y, w2z, du : Double;
 begin
-   for q := 0 to numberofcells -1 do begin
-   tempStr := eightblobsf[q];
-   v1x := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 1))], ' ', 1));
-   v1y := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 1))], ' ', 2));
-   v1z := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 1))], ' ', 3));
-   v2x := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 2))], ' ', 1));
-   v2y := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 2))], ' ', 2));
-   v2z := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 2))], ' ', 3));
-   v3x := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 3))], ' ', 1));
-   v3y := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 3))], ' ', 2));
-   v3z := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 3))], ' ', 3));
-   v6x := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 6))], ' ', 1));
-   v6y := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 6))], ' ', 2));
-   v6z := StrtoFloat(GetToken(vertlistf[StrtoInt(GetToken(tempStr, ' ', 6))], ' ', 3));
+   for q := 0 to blobsworth.Count -1 do begin
 
-   w1x := v2x -v1x; w1y := v2y - v1y; w1z := v2z -v1z;
-   w2x := v2x -v3x; w2y := v2y - v3y; w2z := v2z -v3z;
-   {w3x := v6x -v2x; w3y := v6y - v2y; w3z := v6z -v2z; }
-   w8norm := sqrt(sqr(v6x) + sqr(v6y) + sqr(v6z));
+   tempStr := blobsworth[q];
+
+   v0 := GetToken(tempStr, ' ', 2);
+   v1 := GetToken(tempStr, ' ', 3);
+   v2 := GetToken(tempStr, ' ', 4);
+   v6 := GetToken(tempStr, ' ', 7);
+
+   v0x := (Numarrayx[StrtoInt(v0)]);
+   v0y := (Numarrayy[StrtoInt(v0)]);
+   v0z := (Numarrayz[StrtoInt(v0)]);
+   v1x := (Numarrayx[StrtoInt(v1)]);
+   v1y := (Numarrayy[StrtoInt(v1)]);
+   v1z := (Numarrayz[StrtoInt(v1)]);
+   v2x := (Numarrayx[StrtoInt(v2)]);
+   v2y := (Numarrayy[StrtoInt(v2)]);
+   v2z := (Numarrayz[StrtoInt(v2)]);
+   v6x := (Numarrayx[StrtoInt(v6)]);
+   v6y := (Numarrayy[StrtoInt(v6)]);
+   v6z := (Numarrayz[StrtoInt(v6)]);
+
+   w1x := v0x -v1x; w1y := v0y - v1y; w1z := v0z -v1z;
+   w2x := v2x -v1x; w2y := v2y - v1y; w2z := v2z -v1z;
+   w6x := v6x -v1x; w6y := v6y - v1y; w6z := v6z -v1z;
    cr := Crossp(w1x, w1y, w1z, w2x, w2y, w2z);
-   upsubx := StrtoFloat(GetToken(cr, ' ', 1));
-   upsuby := StrtoFloat(GetToken(cr, ' ', 2));
-   upsubz := StrtoFloat(GetToken(cr, ' ', 3));
 
-   upsubnorm := sqrt(sqr(upsubx) + sqr(upsuby) + sqr(upsubz));
-   normcrx := upsubx/upsubnorm;
-   normcry := upsuby/upsubnorm;
-   normcrz := upsubz/upsubnorm;
+   du := Dotp(StrtoFloat(GetToken(cr, ' ', 1)),
+     StrtoFloat(GetToken(cr, ' ', 2)), StrtoFloat(GetToken(cr, ' ', 3)), w6x, w6y, w6z);
 
-   locv6x := v6x -v2x ;
-   locv6y := v6y -v2y;
-   locv6z := v6z -v2z;
-   normlocv := sqrt(sqr(locv6x) + sqr(locv6y) + sqr(locv6z));
-   {du := Dotp(w1x, w1y, w1z, StrtoFloat(GetToken(cr, ' ', 1)),
-     StrtoFloat(GetToken(cr, ' ', 2)), StrtoFloat(GetToken(cr, ' ', 3)));}
-   numer :=(upsubnorm)*(w8norm);
-     if numer < 0.0000000000001 then numer := 0.0000000000001;
-   { dur := Dotp(upsubx, upsuby, upsubz, v6x, v6y, v6z)/ numer;}
-    dur := Dotp(normcrx, normcry, normcrz, locv6x, locv6y, locv6z)/normlocv;
+    { output.Add('v0,v1,v2,v6 '+(v0)+' '+(v1)+' '+(v2)+' '+(v6));
+     output.Add('v0x,v0y,v0z ' +FloattoStr(v0x)+' '+FloattoStr(v0y)+' '+FloattoStr(v0z));
+     output.Add('v1x,v1y,v1z ' +FloattoStr(v1x)+' '+FloattoStr(v1y)+' '+FloattoStr(v1z));
+     output.Add('v2x,v2y,v2z ' +FloattoStr(v2x)+' '+FloattoStr(v2y)+' '+FloattoStr(v2z));
+     output.Add('v6x,v6y,v6z ' +FloattoStr(v6x)+' '+FloattoStr(v6y)+' '+FloattoStr(v6z));
+     output.Add('du ' + FloattoStr(du));     }
 
-    if dur <= Abs(1) then du := RadtoDeg(Arccos(dur))
-    else du := 0;
-  { output.Add('upsub ' + FloattoStr(upsubx) + ' ' + FloattoStr(upsuby) + ' ' +
-     FloattoStr(upsubz) );
-   output.Add('loccrx loccry loccrz ' + FloattoStr(loccrx) + ' ' + FloattoStr(loccry) + ' ' +
-     FloattoStr(loccrz) );
-   output.Add('v2x v2y v2z ' + FloattoStr(v2x) + ' ' + FloattoStr(v2y) + ' ' +
-     FloattoStr(v2z) );
-   output.Add('v6x v6y v6z ' + FloattoStr(v6x) + ' ' + FloattoStr(v6y) + ' ' +
-     FloattoStr(v6z) );
-   output.Add('du ' + FloattoStr(du));
-   output.Add('cr ' + cr); }
-   {output.Add('normcrx normcry normcrz ' + ' ' + FloattoStr(normcrx) + ' ' +
-     FloattoStr(normcry) + ' ' + FloattoStr(normcrz) );}
-    { output.Add('loccrx loccry loccrz ' + ' ' + FloattoStr(loccrx) + ' ' +
-     FloattoStr(loccry) + ' ' + FloattoStr(loccrz));}
-   if du < 90 then begin
-   eightblobsf[q] := GetToken(tempStr, ' ', 5) + ' ' + GetToken(tempStr, ' ', 6) +
-     ' ' +  GetToken(tempStr, ' ', 7) + ' ' + GetToken(tempStr, ' ', 8) + ' ' +
-     GetToken(tempStr, ' ', 1) + ' ' + GetToken(tempStr, ' ', 2) + ' ' +
-     GetToken(tempStr, ' ', 3) + ' ' + GetToken(tempStr, ' ', 4);
+     {*******************************************
+     Note: I don't know where the winding gets done in Blenbridge, or whether
+     it is inherited from the Blender .ply export. Anyway, if the leading face
+     in the blobsworth line gives a positive du, that means the face is wound
+     ccw, and needs to be changed. When blobsworth is reached, the minimum
+     number of elements remain (after sorting), so it seems that is a good place
+     to check the winding.}
 
-   end;
+  if du > 0 then begin
+    blobsworth[q] := ' ' + GetToken(tempStr, ' ', 6) + ' ' + GetToken(tempStr, ' ', 7) +
+     ' ' +  GetToken(tempStr, ' ', 8) + ' ' + GetToken(tempStr, ' ', 9) + ' ' +
+     GetToken(tempStr, ' ', 2) + ' ' + GetToken(tempStr, ' ', 3) + ' ' +
+     GetToken(tempStr, ' ', 4) + ' ' + GetToken(tempStr, ' ', 5);
+
+    end;
+  {else if du < 0 then begin
+    blobsworth[q] := ' ' + GetToken(tempStr, ' ', 6) + ' ' + GetToken(tempStr, ' ', 7) +
+     ' ' +  GetToken(tempStr, ' ', 8) + ' ' + GetToken(tempStr, ' ', 9) + ' ' +
+     GetToken(tempStr, ' ', 2) + ' ' + GetToken(tempStr, ' ', 3) + ' ' +
+     GetToken(tempStr, ' ', 4) + ' ' + GetToken(tempStr, ' ', 5);
+    end; }
+
+
  end;
 end;
 
