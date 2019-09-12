@@ -27,11 +27,11 @@
         <div style="margin: 0px 200px 0px 200px;display: block; " id="text_5fe3b4c2_padding" >
           <div style="text-align:center;">
             <span style="font-size:12pt; font-family:Charter; color:#FFFFFF; "><br/><br/><br/><br/><br/><br/></span>
-            <span style="font-size:18pt; font-family:Charter; color:#000000; ">Blenbridge 1.18 Documentation</span>
+            <span style="font-size:18pt; font-family:Charter; color:#000000; ">Blenbridge 1.20 Documentation</span>
             <span style="font-size:12pt; font-family:Charter; color:#000000; "><br/><br/><br/><br/><br/><br/><br/><br/></span>
             <span style="font-size:14pt; font-family:Charter; color:#000000; ">by Gary Bollenbach<br/></span>
             <span style="font-size:12pt; font-family:Charter; color:#000000; "><br/></span>
-            <span style="font-size:13pt; font-family:Charter; color:#000000; "><br/>September 11, 2018</span>
+            <span style="font-size:13pt; font-family:Charter; color:#000000; "><br/>September 11, 2019</span>
             </div>
           <div style="text-align:left;">
             <span style="font-size:12pt; font-family:Charter; color:#000000; "> </span>
@@ -105,33 +105,16 @@
           </div>
         </div>
       <img src="images/0003.png" style="position:absolute; left:494px; top:2426px; width:219px; height:159px; background:none; " id="img_62dae33d" alt="" title="" />
-      <img src="images/0005.png" style="position:absolute; left:575px; top:2658px; width:44px; height:66px; background:none; " id="img_6de8b94b" alt="" title="" />
       <img src="images/0006.png" style="position:absolute; left:556px; top:2859px; width:184px; height:133px; background:none; " id="img_7cd0f8ae" alt="" title="" />
-      <div style="position:absolute; top:3033px; left:0px; right:0px; margin-left:auto; margin-right:auto; width:687px; height:240px; background:none; " id="text_2289bf5a">
+      <div style="position:absolute; top:3033px; left:0px; right:0px; margin-left:auto; margin-right:auto; width:687px; height:529px; background:none; " id="text_2289bf5a">
         <div style="text-align:left;">
-          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Above: the demo1 .ply file from Blender is loaded into Blenbridge and processed. The result file is given a .vtk extension (which must be added by hand) and saved. The style of .vtk file produced is 'legacy unstructured grid', a useful type in the Vtk collection for describing finite element mesh.    <br/><br/>Note: The 'CELL DATA' block seen in the output file above is a Vtk field used by IA-FEMesh. Its presence does not bother either Paraview or Gmsh. However, if it is desired to import the .vtk file into Febio Preview, the Cell Data block must be removed first.  (If the &#8216;Field Data&#8217; checkbox remains unchecked, Blenbridge will finish slightly sooner.)<br/><br/>The conversion process consists basically of two steps: first, run Blenbridge on the desired file until no error messages appear, and second, open the resulting .vtk in Paraview until all the connected geometry is present.  </span>
+          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Above: a typical .ply file from Blender is loaded into Blenbridge and processed. The result file is given a .vtk extension and saved. The style of .vtk file produced is 'legacy unstructured grid', a useful type in the Vtk collection for describing finite element mesh.   <br/><br/>As shown above, a dynamic label serves as a progress indicator. The &#8216;Conversion Complete&#8217; message signals the end of the process.The appropriate conversion direction is set in the Action menu. The anticipated file extension is attached to the output file.<br/><br/>Note: The 'CELL DATA' block seen in the output file above is a Vtk field used by IA-FEMesh. Its presence does not bother either Paraview or Gmsh. However, if it is desired to import the .vtk file into Febio Preview, the Cell Data block must be removed first.  (If the &#8216;Field Data&#8217; submenu item remains unchecked, Blenbridge will finish slightly sooner.)<br/><br/>The conversion process consists basically of two steps: first, run Blenbridge on the desired file until no error messages appear, and second, open the resulting .vtk in Paraview until all the connected geometry is present.<br/><br/>About &#8216;Radfac&#8217;. Blenbridge attempts to build a hexahedral element from each face in the model. To do this, it sequentially looks at small subsets consisting of possible connecting faces. The variable Radfac, or &#8216;radial factor&#8217;,  determines the size of the working subset of faces, and is multiplied times the separation distance between centroids of candidate faces to decide whether to include them in the current search. The default Radfac value is 2, and is effective on well-proportioned geometry, (and on some not so well-proportioned). For example, the long prism elements of the mesh depicted below, converted by a Radfac of 2, are all present. If an element or group of elements is not converted by Blenbridge, we may decide to increase the Radfac level and try again. However, it should be noted that in the majority of cases, it is the presence of a geometric defect, or multiple ones, which cause the conversion of a mesh to be incomplete.  </span>
           </div>
         </div>
-      <div style="position:absolute; left:54px; top:3296px; width:536px; height:252px; background:none; " id="text_38d84016">
-        <div style="text-align:left;">
-          <span style="font-size:11pt; font-family:Charter; color:#000000; ">About &#8216;Radfac&#8217;. Blenbridge attempts to build a hexahedral element from each face in the model. To do this, it sequentially looks at small subsets consisting of possible connecting faces. The variable Radfac, or &#8216;radial factor&#8217;,  determines the size of the working subset of faces, and is multiplied times the separation distance between centroids of candidate faces to decide whether to include them in the current search. The default Radfac value is 2, and is effective on well-proportioned geometry, (and on some not so well-proportioned). For example, the long prism elements of the mesh depicted below, converted by a Radfac of 2, are all present. If an element or group of elements is not converted by Blenbridge, we may decide to increase the Radfac level and try again. However, it should be noted that in the majority of cases, it is the presence of a geometric defect, or multiple ones, which cause the conversion of a mesh to be incomplete.</span>
-          </div>
-        </div>
-      <img src="images/0007.png" style="position:absolute; left:676px; top:3360px; width:43px; height:47px; background:none; " id="img_2c50cf35" alt="" title="" />
       <img src="images/0008.png" style="position:absolute; left:52px; top:3594px; width:697px; height:139px; background:none; " id="img_53400d40" alt="" title="" />
       <div style="position:absolute; left:52px; top:3789px; width:679px; height:76px; background:none; " id="text_6f3e9c7b">
         <div style="text-align:left;">
           <span style="font-size:11pt; font-family:Charter; color:#000000; ">The .vtk output from demo1 is shown in Paraview. Paraview acknowledges the volumetric nature of the object, by using and saving volumetric connectivity, for example.</span>
-          </div>
-        </div>
-      <div style="position:absolute; left:49px; top:3919px; width:292px; height:220px; background:none; " id="text_6f4bea7e">
-        <div style="text-align:left;">
-          <span style="font-size:11pt; font-family:Charter; color:#000000; ">As shown right, a dynamic label serves as a progress indicator. The &#8216;Conversion Complete&#8217; message signals the end of the process.To convert .ply to .vtk, press the .vtk button. To convert .vtk to .ply, press the .ply button.</span>
-          </div>
-        </div>
-      <div style="position:absolute; left:50px; top:4285px; width:307px; height:111px; background:none; " id="text_5224ef04">
-        <div style="text-align:left;">
-          <span style="font-size:11pt; font-family:Charter; color:#000000; ">Blenbridge&#8217;s main form is resizable. By clicking on the size button (shown circled above), we are taken successively through five sizes. Blenbridge remembers the last size shown and will start the next session at that size.</span>
           </div>
         </div>
       <div style="position:absolute; left:50px; top:4448px; width:258px; height:254px; background:none; " id="text_55e5f313">
@@ -199,13 +182,13 @@
           <span style="font-size:11pt; font-family:Palatino; color:#000000; font-style:italic; "><a href="page03.html#NamedAnchor3">Return to the Table of Contents</a></span>
           </div>
         </div>
-      <img src="images/full_ui_shot.png" style="position:absolute; left:50px; top:2633px; width:457px; height:354px; background:none; " id="img_7f1a60d2" alt="" title="" />
-      <img src="images/top_strip_with_ring.png" style="position:absolute; left:376px; top:3925px; width:382px; height:55px; background:none; " id="img_f2c482" alt="" title="" />
       <div style="position:absolute; left:311px; top:27px; width:459px; height:61px; background:none; " id="text_71ab4cf8">
         <div style="text-align:left;">
           <span style="font-size:7pt; font-family:'Trebuchet MS', Helvetica, sans-serif; color:#0000FF; ">If text overlaps pictures, it means that font size needs to be reduced. After such font size reduction, the user may wish to boost the page's zoom.</span>
           </div>
         </div>
+      <img src="images/0338.png" style="position:absolute; left:54px; top:2650px; width:490px; height:341px; background:none; " id="img_114fb848" alt="" title="" />
+      <img src="images/0339.png" style="position:absolute; left:583px; top:2652px; width:153px; height:122px; background:none; " id="img_63ddebe7" alt="" title="" />
       </div>
     </div>
   </div>
