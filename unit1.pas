@@ -135,7 +135,7 @@ type
     mycurrentDir2, myvar3, myvar4, a1adj, a2adj, a3adj, a4adj, tempblob,
     outfilename: string;
     numberofverts, numberoffaces, normalno, numberofcells, radfac,
-     ElapsedT, close1, F3, F, eightblobscounter, tbp, ww, hh : Integer;
+     ElapsedT, close1, F3, F, eightblobscounter, tbp, ww, hh, wf : Integer;
      xside, yside, zside, sidecume, vertlistf, hopper1, wooda,
       Trigarray, Trigarray2, finalindex, blobsworth, dupecheck, oneedge,
      twoedge, dupes, dupe8, vertlists, luniverse, output, eightblobsl,
@@ -259,6 +259,7 @@ begin
   close1 := 0;
   hh := Screen.Height;
   ww := Screen.Width;
+  wf := 2700;
   Form1.Height := Round(hh/2);
   Form1.Width := Round(ww/2);
   Memo3.Height := Round(hh/22); Memo3.Width := Round(ww/2.055);
@@ -300,22 +301,22 @@ begin
   Label5.Height := Round(hh/30); Label5.Width := Round(ww/2.5);
   Label5.Left := Round(hh/2.5); Label5.Top := Round(hh/65);
 
-  SynEdit1.Font.Size := Round(ww/230);
-  Memo3.Font.Size := Round(ww/230);
-  Panel1.Font.Size := Round(ww/280);
-  MaskEdit1.Font.Size := Round(ww/300);
-  MaskEdit2.Font.Size := Round(ww/300);
-  Label6.Font.Size := Round(ww/310);
-  Label1.Font.Size := Round(ww/310);
-  Label3.Font.Size := Round(ww/310);
-  Button3.Font.Size := Round(ww/250);
-  Button1.Font.Size := Round(ww/250);
-  StaticText1.Font.Size := Round(ww/250);
-  Memo1.Font.Size := Round(ww/280);
-  Memo1.Font.Size := Round(ww/250);
-  Button2.Font.Size := Round(ww/250);
-  Label5.Font.Size := Round(ww/230);
-  Label4.Font.Size := Round(ww/230);
+  SynEdit1.Font.Size := Round(wf/230);
+  Memo3.Font.Size := Round(wf/230);
+  Panel1.Font.Size := Round(wf/280);
+  MaskEdit1.Font.Size := Round(wf/300);
+  MaskEdit2.Font.Size := Round(wf/300);
+  Label6.Font.Size := Round(wf/310);
+  Label1.Font.Size := Round(wf/310);
+  Label3.Font.Size := Round(wf/310);
+  Button3.Font.Size := Round(wf/250);
+  Button1.Font.Size := Round(wf/250);
+  StaticText1.Font.Size := Round(wf/250);
+  Memo1.Font.Size := Round(wf/280);
+  Memo1.Font.Size := Round(wf/250);
+  Button2.Font.Size := Round(wf/250);
+  Label5.Font.Size := Round(wf/230);
+  Label4.Font.Size := Round(wf/230);
 
   myINI := TINIFile.Create(ExtractFilePath(Application.EXEName) +
   'blenbridge.ini');
