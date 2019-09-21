@@ -7,9 +7,9 @@
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="32" Y="22"/>
         <UsageCount Value="72"/>
-        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="unit1.pas"/>
@@ -18,17 +18,15 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="712"/>
-        <CursorPos X="16" Y="725"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="383"/>
+        <CursorPos X="19" Y="394"/>
         <UsageCount Value="34"/>
         <Bookmarks Count="3">
-          <Item0 X="58" Y="417" ID="1"/>
-          <Item1 X="2" Y="621" ID="2"/>
-          <Item2 X="2" Y="1358" ID="3"/>
+          <Item0 X="58" Y="418" ID="1"/>
+          <Item1 X="2" Y="622" ID="2"/>
+          <Item2 X="2" Y="1359" ID="3"/>
         </Bookmarks>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="../../Lifted/181011 w no sig/unit1.pas"/>
@@ -49,6 +47,9 @@
         <UsageCount Value="9"/>
       </Unit3>
     </Units>
+    <General>
+      <ActiveWindowIndexAtStart Value="-1"/>
+    </General>
     <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>

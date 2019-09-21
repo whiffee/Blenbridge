@@ -6,34 +6,19 @@ object Form1: TForm1
   Align = alTop
   Anchors = []
   Caption = 'Blenbridge'
-  ClientHeight = 861
+  ClientHeight = 883
   ClientWidth = 1396
-  DesignTimePPI = 180
+  DesignTimePPI = 191
   Menu = MainMenu1
   OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poDesktopCenter
   LCLVersion = '1.8.4.0'
   Visible = True
-  object Memo3: TMemo
-    Left = 186
-    Height = 52
-    Top = 73
-    Width = 432
-    Font.Height = -15
-    Font.Name = 'Liberation Mono'
-    Lines.Strings = (
-      'Current input file'
-    )
-    ParentFont = False
-    ScrollBars = ssBoth
-    TabOrder = 0
-    WordWrap = False
-  end
   object Label4: TLabel
     Left = 0
     Height = 1
-    Top = 860
+    Top = 882
     Width = 1396
     Align = alBottom
     Alignment = taCenter
@@ -42,7 +27,7 @@ object Form1: TForm1
   object Label5: TLabel
     Left = 855
     Height = 1
-    Top = 401
+    Top = 411
     Width = 1
     Alignment = taCenter
     Anchors = []
@@ -59,8 +44,8 @@ object Form1: TForm1
     Font.Quality = fqNonAntialiased
     ParentColor = False
     ParentFont = False
-    TabOrder = 1
-    Gutter.Width = 66
+    TabOrder = 0
+    Gutter.Width = 64
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -516,7 +501,7 @@ object Form1: TForm1
         MouseActions = <>
       end
       object SynGutterLineNumber1: TSynGutterLineNumber
-        Width = 17
+        Width = 15
         MouseActions = <>
         MarkupInfo.Background = clBtnFace
         MarkupInfo.Foreground = clNone
@@ -555,7 +540,7 @@ object Form1: TForm1
     Width = 255
     ClientHeight = 223
     ClientWidth = 255
-    TabOrder = 2
+    TabOrder = 1
     Visible = False
     object MaskEdit2: TMaskEdit
       Left = 48
@@ -572,14 +557,11 @@ object Form1: TForm1
     end
     object Label6: TLabel
       Left = 40
-      Height = 17
+      Height = 32
       Top = 184
-      Width = 48
+      Width = 82
       Caption = 'Comvol'
-      Font.Height = -13
-      Font.Name = 'Sans'
       ParentColor = False
-      ParentFont = False
     end
     object MaskEdit1: TMaskEdit
       Left = 61
@@ -596,25 +578,19 @@ object Form1: TForm1
     end
     object Label3: TLabel
       Left = 59
-      Height = 17
+      Height = 32
       Top = 80
-      Width = 43
+      Width = 71
       Caption = 'Radfac'
-      Font.Height = -13
-      Font.Name = 'Sans'
       ParentColor = False
-      ParentFont = False
     end
     object Label1: TLabel
       Left = 136
-      Height = 18
+      Height = 32
       Top = 160
-      Width = 79
+      Width = 118
       Caption = 'Adjust font'
-      Font.Height = -15
-      Font.Name = 'Sans'
       ParentColor = False
-      ParentFont = False
     end
     object Button7: TButton
       Left = 144
@@ -641,7 +617,6 @@ object Form1: TForm1
       Width = 82
       Caption = 'Close'
       OnClick = Button3Click
-      ParentFont = False
       TabOrder = 4
     end
   end
@@ -654,7 +629,7 @@ object Form1: TForm1
     ClientWidth = 505
     Color = 7362130
     ParentColor = False
-    TabOrder = 3
+    TabOrder = 2
     Visible = False
     object Image1: TImage
       Left = 40
@@ -1405,11 +1380,6 @@ object Form1: TForm1
       Top = 216
       Width = 400
       Caption = 'Blenbridge 1.20'
-      Font.Color = clCream
-      Font.Height = -25
-      Font.Name = 'DejaVu Math TeX Gyre'
-      Font.Style = [fsBold]
-      ParentFont = False
       TabOrder = 0
     end
     object Memo1: TMemo
@@ -1419,9 +1389,6 @@ object Form1: TForm1
       Width = 424
       BorderStyle = bsNone
       Color = 7362130
-      Font.Color = clCream
-      Font.Height = -23
-      Font.Name = 'saxMono'
       Lines.Strings = (
         'Gary Bollenbach'
         '11 September 2019'
@@ -1429,7 +1396,6 @@ object Form1: TForm1
         'See main source file for'
         'license info'
       )
-      ParentFont = False
       TabOrder = 1
     end
     object Button1: TButton
@@ -1469,7 +1435,7 @@ object Form1: TForm1
       ''
     )
     ScrollBars = ssAutoBoth
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
   end
   object Button2: TButton
@@ -1479,8 +1445,19 @@ object Form1: TForm1
     Width = 141
     Caption = 'Close usage'
     OnClick = Button2Click
-    TabOrder = 5
+    TabOrder = 4
     Visible = False
+  end
+  object ListBox1: TListBox
+    Left = 99
+    Height = 159
+    Top = 634
+    Width = 199
+    Items.Strings = (
+      'Current input file:'
+    )
+    ItemHeight = 32
+    TabOrder = 5
   end
   object OpenDialog1: TOpenDialog
     left = 504

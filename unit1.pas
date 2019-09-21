@@ -50,12 +50,12 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    ListBox1: TListBox;
     MainMenu1: TMainMenu;
     MaskEdit1: TMaskEdit;
     MaskEdit2: TMaskEdit;
     Memo1: TMemo;
     Memo2: TMemo;
-    Memo3: TMemo;
     MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
@@ -135,7 +135,7 @@ type
     mycurrentDir2, myvar3, myvar4, a1adj, a2adj, a3adj, a4adj, tempblob,
     outfilename: string;
     numberofverts, numberoffaces, normalno, numberofcells, radfac,
-     ElapsedT, close1, F3, F, eightblobscounter, tbp, ww, hh : Integer;
+     ElapsedT, close1, F3, F, eightblobscounter, tbp, ww, hh, wf : Integer;
      xside, yside, zside, sidecume, vertlistf, hopper1, wooda,
       Trigarray, Trigarray2, finalindex, blobsworth, dupecheck, oneedge,
      twoedge, dupes, dupe8, vertlists, luniverse, output, eightblobsl,
@@ -196,7 +196,7 @@ end;
 procedure TForm1.AdjustFont(Sender: TObject);
 
 begin
-  SynEdit1.Font.Size := SynEdit1.Font.Size  + tbp; Memo3.Font.Size := Memo3.Font.Size + tbp;
+  SynEdit1.Font.Size := SynEdit1.Font.Size  + tbp; Listbox1.Font.Size := Listbox1.Font.Size + tbp;
   Memo1.Font.Size := Memo1.Font.Size  + tbp; Button2.Font.Size := Button2.Font.Size + tbp;
   Button3.Font.Size := Button3.Font.Size  + tbp; StaticText1.Font.Size := StaticText1.Font.Size + tbp;
    Button1.Font.Size := Button1.Font.Size + tbp;
@@ -259,10 +259,11 @@ begin
   close1 := 0;
   hh := Screen.Height;
   ww := Screen.Width;
+  wf := 2700;
   Form1.Height := Round(hh/2);
   Form1.Width := Round(ww/2);
-  Memo3.Height := Round(hh/22); Memo3.Width := Round(ww/2.055);
-  Memo3.Left := Round(ww/150); Memo3.Top := Round(hh/32);
+  Listbox1.Height := Round(hh/22); Listbox1.Width := Round(ww/2.055);
+  Listbox1.Left := Round(ww/150); Listbox1.Top := Round(hh/32);
   SynEdit1.Height := Round(hh/2.9); SynEdit1.Width := Round(ww/2.055);
   SynEdit1.Left := Round(ww/150); SynEdit1.Top := Round(hh/12);
   Panel1.Height := Round(hh/6); Panel1.Width := Round(ww/8);
@@ -300,22 +301,22 @@ begin
   Label5.Height := Round(hh/30); Label5.Width := Round(ww/2.5);
   Label5.Left := Round(hh/2.5); Label5.Top := Round(hh/65);
 
-  SynEdit1.Font.Size := Round(ww/230);
-  Memo3.Font.Size := Round(ww/230);
-  Panel1.Font.Size := Round(ww/280);
-  MaskEdit1.Font.Size := Round(ww/300);
-  MaskEdit2.Font.Size := Round(ww/300);
-  Label6.Font.Size := Round(ww/310);
-  Label1.Font.Size := Round(ww/310);
-  Label3.Font.Size := Round(ww/310);
-  Button3.Font.Size := Round(ww/250);
-  Button1.Font.Size := Round(ww/250);
-  StaticText1.Font.Size := Round(ww/250);
-  Memo1.Font.Size := Round(ww/280);
-  Memo1.Font.Size := Round(ww/250);
-  Button2.Font.Size := Round(ww/250);
-  Label5.Font.Size := Round(ww/230);
-  Label4.Font.Size := Round(ww/230);
+  SynEdit1.Font.Size := Round(wf/230);
+  Listbox1.Font.Size := Round(wf/230);
+  Panel1.Font.Size := Round(wf/280);
+  MaskEdit1.Font.Size := Round(wf/300);
+  MaskEdit2.Font.Size := Round(wf/300);
+  Label6.Font.Size := Round(wf/310);
+  Label1.Font.Size := Round(wf/310);
+  Label3.Font.Size := Round(wf/310);
+  Button3.Font.Size := Round(wf/250);
+  Button1.Font.Size := Round(wf/250);
+  StaticText1.Font.Size := Round(wf/250);
+  Memo1.Font.Size := Round(wf/280);
+  Memo1.Font.Size := Round(wf/250);
+  Button2.Font.Size := Round(wf/250);
+  Label5.Font.Size := Round(wf/230);
+  Label4.Font.Size := Round(wf/230);
 
   myINI := TINIFile.Create(ExtractFilePath(Application.EXEName) +
   'blenbridge.ini');
@@ -390,7 +391,7 @@ begin
     SynEdit1.lines.LoadFromFile(myvar3);
     end;
 
-    Memo3.Lines.Add(myvar3);
+    Listbox1.Items.Add(myvar3);
 end;
 
 procedure TForm1.MenuItem5Click(Sender: TObject);
