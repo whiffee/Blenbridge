@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectSession>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="4">
+    <Units Count="6">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <CursorPos X="32" Y="22"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="101"/>
       </Unit0>
       <Unit1>
         <Filename Value="unit1.pas"/>
@@ -19,15 +19,17 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="-1"/>
         <TopLine Value="247"/>
-        <CursorPos X="11" Y="262"/>
-        <UsageCount Value="34"/>
-        <Bookmarks Count="3">
-          <Item0 X="58" Y="418" ID="1"/>
-          <Item1 X="2" Y="622" ID="2"/>
-          <Item2 X="2" Y="1359" ID="3"/>
+        <CursorPos X="22" Y="257"/>
+        <UsageCount Value="47"/>
+        <Bookmarks Count="4">
+          <Item0 X="24" Y="161"/>
+          <Item1 X="17" Y="252" ID="4"/>
+          <Item2 X="6" Y="279" ID="5"/>
+          <Item3 X="6" Y="411" ID="6"/>
         </Bookmarks>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="../../Lifted/181011 w no sig/unit1.pas"/>
@@ -37,7 +39,7 @@
         <UnitName Value="Unit1"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="5"/>
       </Unit2>
       <Unit3>
         <Filename Value="../../../../Lifted/181012 internal plus surf/unit1.pas"/>
@@ -45,12 +47,130 @@
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <TopLine Value="1765"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="7"/>
       </Unit3>
+      <Unit4>
+        <Filename Value="/usr/share/lazarus/2.0.8/components/lazutils/laztracer.pas"/>
+        <UnitName Value="LazTracer"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="39"/>
+        <CursorPos Y="50"/>
+        <UsageCount Value="8"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="../../Lifted_release/200622_getting_reacquainted/unit1.pas"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit1"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="306"/>
+        <CursorPos X="3" Y="317"/>
+        <UsageCount Value="13"/>
+        <Bookmarks Count="3">
+          <Item0 X="17" Y="726" ID="1"/>
+          <Item1 X="6" Y="750" ID="2"/>
+          <Item2 X="3" Y="317" ID="3"/>
+        </Bookmarks>
+      </Unit5>
     </Units>
-    <General>
-      <ActiveWindowIndexAtStart Value="-1"/>
-    </General>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="23" HistoryIndex="22">
+      <Position1>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="334" Column="48" TopLine="316"/>
+      </Position1>
+      <Position2>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="356" Column="11" TopLine="338"/>
+      </Position2>
+      <Position3>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="359" Column="12" TopLine="341"/>
+      </Position3>
+      <Position4>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="377" Column="12" TopLine="359"/>
+      </Position4>
+      <Position5>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="419" Column="8" TopLine="400"/>
+      </Position5>
+      <Position6>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="435" Column="11" TopLine="417"/>
+      </Position6>
+      <Position7>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="419" Column="3" TopLine="415"/>
+      </Position7>
+      <Position8>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="421" Column="36" TopLine="349"/>
+      </Position8>
+      <Position9>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="254" Column="17" TopLine="243"/>
+      </Position9>
+      <Position10>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="280" Column="6" TopLine="276"/>
+      </Position10>
+      <Position11>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="616" Column="23" TopLine="505"/>
+      </Position11>
+      <Position12>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="280" Column="6" TopLine="276"/>
+      </Position12>
+      <Position13>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="272" Column="14" TopLine="252"/>
+      </Position13>
+      <Position14>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="281" Column="6" TopLine="270"/>
+      </Position14>
+      <Position15>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="413" Column="6" TopLine="413"/>
+      </Position15>
+      <Position16>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="256" Column="3" TopLine="252"/>
+      </Position16>
+      <Position17>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="421" Column="26" TopLine="405"/>
+      </Position17>
+      <Position18>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="420" Column="26" TopLine="404"/>
+      </Position18>
+      <Position19>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="419" Column="27" TopLine="409"/>
+      </Position19>
+      <Position20>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="279" Column="6" TopLine="268"/>
+      </Position20>
+      <Position21>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="411" Column="6" TopLine="398"/>
+      </Position21>
+      <Position22>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="279" Column="62" TopLine="250"/>
+      </Position22>
+      <Position23>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="413" Column="6" TopLine="388"/>
+      </Position23>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode="default"/>
+    </RunParams>
   </ProjectSession>
 </CONFIG>

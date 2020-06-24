@@ -1,6 +1,6 @@
-{  Blenbridge version 1.20
+{  Blenbridge version 1.21
    written by Gary Bollenbach
-   September 11, 2019
+   June 23, 2020
 
 
 ***** BEGIN GPL LICENSE BLOCK *****
@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  MaskEdit, ExtCtrls, Menus, Math, IniFiles, SynEdit, LCLintf, StrUtils;
+  MaskEdit, ExtCtrls, Menus, Math, IniFiles, SynEdit, LCLintf, StrUtils, CRT;
 
 type
 
@@ -44,12 +44,14 @@ type
     Button3: TButton;
     Button7: TButton;
     Button8: TButton;
+    Button9: TButton;
     Image1: TImage;
     Label1: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
     MainMenu1: TMainMenu;
     MaskEdit1: TMaskEdit;
     MaskEdit2: TMaskEdit;
@@ -59,6 +61,7 @@ type
     MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
+    MenuItem12: TMenuItem;
     MenuItem13: TMenuItem;
     MenuItem16: TMenuItem;
     MenuItem17: TMenuItem;
@@ -85,6 +88,7 @@ type
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure MenuItem10Click(Sender: TObject);
@@ -127,6 +131,8 @@ type
     procedure EnforceVerdictWinding(Sender: TObject);
     function Crossp(w1, w2, w3, x1, x2, x3: Double): String;
     function Dotp(y1, y2, y3, z1, z2, z3: Double): Double;
+    procedure ResizeEvent(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
 
   private
     { private declarations }
@@ -135,7 +141,7 @@ type
     mycurrentDir2, myvar3, myvar4, a1adj, a2adj, a3adj, a4adj, tempblob,
     outfilename: string;
     numberofverts, numberoffaces, normalno, numberofcells, radfac,
-     ElapsedT, close1, F3, F, eightblobscounter, tbp, ww, hh, wf : Integer;
+     ElapsedT, F3, F, eightblobscounter, tbp, ww, hh, wf : Integer;
      xside, yside, zside, sidecume, vertlistf, hopper1, wooda,
       Trigarray, Trigarray2, finalindex, blobsworth, dupecheck, oneedge,
      twoedge, dupes, dupe8, vertlists, luniverse, output, eightblobsl,
@@ -154,6 +160,8 @@ type
     fc : array [0..4] of Double;
     formsyze, inivaluef : Single;
     vtkout, plyout : Boolean;
+    pic : Double;
+    button9count, savesize : Integer;
 
   end;
 
@@ -228,98 +236,162 @@ begin
   AdjustFont(Sender);
 end;
 
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Button9Click(Sender: TObject);
+begin
+
+  ResizeEvent(Sender);
+end;
+
 procedure TForm1.FormDestroy(Sender: TObject);
 var
     myINI : TINIFile;
 begin
+
+
    myINI := TINIFile.Create(ExtractFilePath(Application.EXEName) +
    'blenbridge.ini');
 
    with myINI do begin
-      WriteFloat('Settings','Form Size', formsyze);
+      WriteInteger('Section', 'Ident', savesize);
    end;
    myINI.Free;
-   close1 := close1 +1;
+  { close1 := close1 +1; }
   { Button4.Color := clYellow;
    Button4.Color := $007E6E09; }
   { Button4.Color := RGBToColor(255, 251, 148);
    Button4.Font.Style := [fsBold];
    Button4.Caption := 'Quit?';  }
-   if close1 = 1 then begin
+  { if close1 = 1 then begin }
+ { Delay(600); }
    Halt(0);
-   end;
+   {end;}
 end;
+
+
 
 procedure TForm1.FormShow(Sender: TObject);
 var
 myINI : TINIFile;
 begin
-  Label5.Font.Color := clGreen;
+   myINI := TINIFile.Create(ExtractFilePath(Application.EXEName) +
+  'blenbridge.ini');
+
+   inivaluef := myINI.ReadInteger('Section', 'Ident', 0);
+   if inivaluef = 0 then savesize := 0;
+   if inivaluef = 1 then savesize := 1;
+   if inivaluef = 2 then savesize := 2;
+   if inivaluef = 3 then savesize := 3;
+   if inivaluef = 4 then savesize := 4;
+   if inivaluef = 5 then savesize := 5;
+   if inivaluef = 6 then savesize := 6;
+   if inivaluef = 7 then savesize := 7;
+   if savesize = 0 then pic := 0.75 ;
+   if savesize = 1 then pic := 0.7875;
+   if savesize = 2 then pic := 0.8682;
+   if savesize = 3 then pic := 0.9116;
+   if savesize = 4 then pic := 0.9572;
+   if savesize = 5 then pic := 1.005;
+   if savesize = 6 then pic := 1.055;
+   if savesize = 7 then pic := 1.108;
+
+
+   button9count := 0;
+   Label5.Font.Color := clGreen;
   Timer1.enabled := false;
-  close1 := 0;
+
+  {pic := 0.75; }
   hh := Screen.Height;
   ww := Screen.Width;
   wf := 2700;
-  Form1.Height := Round(hh/2);
-  Form1.Width := Round(ww/2);
-  Memo3.Height := Round(hh/22); Memo3.Width := Round(ww/2.055);
-  Memo3.Left := Round(ww/150); Memo3.Top := Round(hh/32);
-  SynEdit1.Height := Round(hh/2.9); SynEdit1.Width := Round(ww/2.055);
-  SynEdit1.Left := Round(ww/150); SynEdit1.Top := Round(hh/12);
-  Panel1.Height := Round(hh/6); Panel1.Width := Round(ww/8);
-  Panel1.Left := Round(hh/3.0); Panel1.Top := Round(hh/15);
-  Button3.Height := Round(hh/39); Button3.Width := Round(ww/26);
-  Button3.Left := Round(hh/14.5); Button3.Top := Round(hh/7.7);
-  MaskEdit2.Height := Round(hh/40); MaskEdit2.Width := Round(ww/35);
-  MaskEdit2.Left := Round(hh/40); MaskEdit2.Top := Round(hh/14);
-  Label6.Height := Round(hh/30); Label6.Width := Round(ww/25);
-  Label6.Left := Round(hh/45); Label6.Top := Round(hh/10);
-  Label1.Height := Round(hh/30); Label1.Width := Round(ww/25);
-  Label1.Left := Round(hh/9.5); Label1.Top := Round(hh/10);
-  Button8.Height := Round(hh/45); Button8.Width := Round(hh/45);
-  Button8.Left := Round(hh/6.5); Button8.Top := Round(hh/14);
-  Button7.Height := Round(hh/45); Button7.Width := Round(hh/45);
-  Button7.Left := Round(hh/9); Button7.Top := Round(hh/14);
-  Button1.Height := Round(hh/45); Button1.Width := Round(hh/15);
-  Button1.Left := Round(hh/11); Button1.Top := Round(hh/4);
-  MaskEdit1.Height := Round(hh/40); MaskEdit1.Width := Round(ww/35);
-  MaskEdit1.Left := Round(hh/40); MaskEdit1.Top := Round(hh/50);
-  Label3.Height := Round(hh/30); Label3.Width := Round(ww/25);
-  Label3.Left := Round(hh/45); Label3.Top := Round(hh/22);
-  Panel2.Height := Round(hh/3.5); Panel2.Width := Round(ww/6.5);
-  Panel2.Left := Round(hh/3.4); Panel2.Top := Round(hh/25);
-  Image1.Height := Round(hh/6); Image1.Width := Round(ww/5);
-  Image1.Left := Round(hh/25.5); Image1.Top := Round(hh/55);
-  StaticText1.Height := Round(hh/30); StaticText1.Width := Round(ww/5);
-  StaticText1.Left := Round(hh/20.2); StaticText1.Top := Round(hh/9.5);
-  Memo1.Height := Round(hh/12); Memo1.Width := Round(ww/5);
-  Memo1.Left := Round(hh/40); Memo1.Top := Round(hh/6.6);
-  Memo2.Height := Round(hh/2.5); Memo2.Width := Round(ww/2.055);
-  Memo2.Left := Round(ww/150); Memo2.Top := Round(hh/32);
-  Button2.Height := Round(hh/45); Button2.Width := Round(hh/8);
-  Button2.Left := Round(hh/2.9); Button2.Top := Round(hh/2.3);
-  Label5.Height := Round(hh/30); Label5.Width := Round(ww/2.5);
-  Label5.Left := Round(hh/2.5); Label5.Top := Round(hh/65);
+  Form1.Height := Round(hh/2*pic);
+  Form1.Width := Round(ww/2*pic);
+  Memo3.Height := Round(hh/22*pic); Memo3.Width := Round(ww/2.055*pic);
+  Memo3.Left := Round(ww/150*pic); Memo3.Top := Round(hh/32*pic);
+  SynEdit1.Height := Round(hh/2.9*pic); SynEdit1.Width := Round(ww/2.055*pic);
+  SynEdit1.Left := Round(ww/150*pic); SynEdit1.Top := Round(hh/12*pic);
+  Panel1.Height := Round(hh/6*pic); Panel1.Width := Round(ww/8*pic);
+  Panel1.Left := Round(hh/3.0*pic); Panel1.Top := Round(hh/15*pic);
+  Button3.Height := Round(hh/40*pic); Button3.Width := Round(ww/26*pic);
+  Button3.Left := Round(hh/14.5*pic); Button3.Top := Round(hh/7.7*pic);
+  MaskEdit2.Height := Round(hh/40*pic); MaskEdit2.Width := Round(ww/35*pic);
+  MaskEdit2.Left := Round(hh/40*pic); MaskEdit2.Top := Round(hh/14*pic);
+  Label6.Height := Round(hh/30*pic); Label6.Width := Round(ww/25*pic);
+  Label6.Left := Round(hh/45*pic); Label6.Top := Round(hh/10*pic);
+  Label1.Height := Round(hh/30*pic); Label1.Width := Round(ww/25*pic);
+  Label1.Left := Round(hh/9.5*pic); Label1.Top := Round(hh/10*pic);
+  Button8.Height := Round(hh/45*pic); Button8.Width := Round(hh/45*pic);
+  Button8.Left := Round(hh/6.5*pic); Button8.Top := Round(hh/14*pic);
+  Button7.Height := Round(hh/45*pic); Button7.Width := Round(hh/45*pic);
+  Button7.Left := Round(hh/9*pic); Button7.Top := Round(hh/14*pic);
+  Button1.Height := Round(hh/45*pic); Button1.Width := Round(hh/15*pic);
+  Button1.Left := Round(hh/11*pic); Button1.Top := Round(hh/4*pic);
+  MaskEdit1.Height := Round(hh/40*pic); MaskEdit1.Width := Round(ww/35*pic);
+  MaskEdit1.Left := Round(hh/40*pic); MaskEdit1.Top := Round(hh/50*pic);
+  Label3.Height := Round(hh/30*pic); Label3.Width := Round(ww/25*pic);
+  Label3.Left := Round(hh/45*pic); Label3.Top := Round(hh/22*pic);
+  Panel2.Height := Round(hh/3.5*pic); Panel2.Width := Round(ww/6.5*pic);
+  Panel2.Left := Round(hh/3.4*pic); Panel2.Top := Round(hh/25*pic);
+  Image1.Height := Round(hh/6*pic); Image1.Width := Round(ww/5*pic);
+  Image1.Left := Round(hh/25.5*pic); Image1.Top := Round(hh/55*pic);
+  StaticText1.Height := Round(hh/30*pic); StaticText1.Width := Round(ww/5*pic);
+  StaticText1.Left := Round(hh/20.2*pic); StaticText1.Top := Round(hh/9.5*pic);
+  Memo1.Height := Round(hh/12*pic); Memo1.Width := Round(ww/5*pic);
+  Memo1.Left := Round(hh/40*pic); Memo1.Top := Round(hh/6.6*pic);
+  Memo2.Height := Round(hh/2.5*pic); Memo2.Width := Round(ww/2.055*pic);
+  Memo2.Left := Round(ww/150*pic); Memo2.Top := Round(hh/32*pic);
+  Button2.Height := Round(hh/45*pic); Button2.Width := Round(hh/8*pic);
+  Button2.Left := Round(hh/2.9*pic); Button2.Top := Round(hh/2.3*pic);
+  Label5.Height := Round(hh/30*pic); Label5.Width := Round(ww/2.5*pic);
+  Label5.Left := Round(hh/2.5*pic); Label5.Top := Round(hh/65*pic);
+  Button9.Height := Round(hh/45*pic); Button9.Width := Round(hh/45*pic);
+  Button9.Left := Round(hh/7*pic); Button9.Top := Round(hh/50*pic);
+  Label7.Height := Round(hh/30*pic); Label7.Width := Round(ww/2.5*pic);
+  Label7.Left := Round(hh/8.6*pic); Label7.Top := Round(hh/22*pic);
 
-  SynEdit1.Font.Size := Round(wf/230);
-  Memo3.Font.Size := Round(wf/230);
-  Panel1.Font.Size := Round(wf/280);
-  MaskEdit1.Font.Size := Round(wf/300);
-  MaskEdit2.Font.Size := Round(wf/300);
-  Label6.Font.Size := Round(wf/310);
-  Label1.Font.Size := Round(wf/310);
-  Label3.Font.Size := Round(wf/310);
-  Button3.Font.Size := Round(wf/250);
-  Button1.Font.Size := Round(wf/250);
-  StaticText1.Font.Size := Round(wf/250);
-  Memo1.Font.Size := Round(wf/280);
-  Memo1.Font.Size := Round(wf/250);
-  Button2.Font.Size := Round(wf/250);
-  Label5.Font.Size := Round(wf/230);
-  Label4.Font.Size := Round(wf/230);
+  SynEdit1.Font.Size := Round(wf/230*pic);
+  Memo3.Font.Size := Round(wf/230*pic);
+  Panel1.Font.Size := Round(wf/280*pic);
+  MaskEdit1.Font.Size := Round(wf/300*pic);
+  MaskEdit2.Font.Size := Round(wf/300*pic);
+  Label6.Font.Size := Round(wf/310*pic);
+  Label1.Font.Size := Round(wf/310*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Button3.Font.Size := Round(wf/250*pic);
+  Button1.Font.Size := Round(wf/250*pic);
+  StaticText1.Font.Size := Round(wf/250*pic);
+  Memo1.Font.Size := Round(wf/280*pic);
+  Memo1.Font.Size := Round(wf/250*pic);
+  Button2.Font.Size := Round(wf/250*pic);
+  Label5.Font.Size := Round(wf/230*pic);
+  Label4.Font.Size := Round(wf/230*pic);
+  Button9.Font.Size := Round(wf/250*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Label7.Font.Size := Round(wf/310*pic);
+  Memo3.Font.Size := Round(wf/230*pic);
+  Panel1.Font.Size := Round(wf/280*pic);
+  MaskEdit1.Font.Size := Round(wf/300*pic);
+  MaskEdit2.Font.Size := Round(wf/300*pic);
+  Label6.Font.Size := Round(wf/310*pic);
+  Label1.Font.Size := Round(wf/310*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Button3.Font.Size := Round(wf/250*pic);
+  Button1.Font.Size := Round(wf/250*pic);
+  StaticText1.Font.Size := Round(wf/250*pic);
+  Memo1.Font.Size := Round(wf/280*pic);
+  Memo1.Font.Size := Round(wf/250*pic);
+  Button2.Font.Size := Round(wf/250*pic);
+  Label5.Font.Size := Round(wf/230*pic);
+  Label4.Font.Size := Round(wf/230*pic);
+  Button9.Font.Size := Round(wf/250*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Label7.Font.Size := Round(wf/310*pic);
 
-  myINI := TINIFile.Create(ExtractFilePath(Application.EXEName) +
-  'blenbridge.ini');
+
 
    { inivaluef := myINI.ReadFloat('Settings','Form Size', 3.0);
 
@@ -332,6 +404,217 @@ begin
     myINI.Free;
     vtkout := false;
     plyout := false;
+end;
+
+procedure TForm1.ResizeEvent(Sender: TObject);
+var
+myINI : TINIFile;
+
+begin
+  Label5.Font.Color := clGreen;
+  Timer1.enabled := false;
+
+
+  button9count := button9count +1;
+  savesize := savesize +1;
+
+
+{ output.Add('luniverse[' + InttoStr(s) + '] ' + luniverse[s]); }
+ {output.Add('ofw ' + InttoStr(ofw)); }
+  if (Form1.Height < Round (0.6*Screen.Height)) AND
+     (Form1.Width < Round (0.6*Screen.Width)) then
+   begin
+  pic := pic * 1.05;
+  hh := Screen.Height;
+  ww := Screen.Width;
+
+  Form1.Height := Round(hh/2*pic);
+  Form1.Width := Round(ww/2*pic);
+  Memo3.Height := Round(hh/22*pic); Memo3.Width := Round(ww/2.055*pic);
+  Memo3.Left := Round(ww/150*pic); Memo3.Top := Round(hh/32*pic);
+  SynEdit1.Height := Round(hh/2.9*pic); SynEdit1.Width := Round(ww/2.055*pic);
+  SynEdit1.Left := Round(ww/150*pic); SynEdit1.Top := Round(hh/12*pic);
+  Panel1.Height := Round(hh/6*pic); Panel1.Width := Round(ww/8*pic);
+  Panel1.Left := Round(hh/3.0*pic); Panel1.Top := Round(hh/15*pic);
+  Button3.Height := Round(hh/40*pic); Button3.Width := Round(ww/26*pic);
+  Button3.Left := Round(hh/14.5*pic); Button3.Top := Round(hh/7.7*pic);
+  MaskEdit2.Height := Round(hh/40*pic); MaskEdit2.Width := Round(ww/35*pic);
+  MaskEdit2.Left := Round(hh/40*pic); MaskEdit2.Top := Round(hh/14*pic);
+  Label6.Height := Round(hh/30*pic); Label6.Width := Round(ww/25*pic);
+  Label6.Left := Round(hh/45*pic); Label6.Top := Round(hh/10*pic);
+  Label1.Height := Round(hh/30*pic); Label1.Width := Round(ww/25*pic);
+  Label1.Left := Round(hh/9.5*pic); Label1.Top := Round(hh/10*pic);
+  Button8.Height := Round(hh/45*pic); Button8.Width := Round(hh/45*pic);
+  Button8.Left := Round(hh/6.5*pic); Button8.Top := Round(hh/14*pic);
+  Button7.Height := Round(hh/45*pic); Button7.Width := Round(hh/45*pic);
+  Button7.Left := Round(hh/9*pic); Button7.Top := Round(hh/14*pic);
+  Button1.Height := Round(hh/45*pic); Button1.Width := Round(hh/15*pic);
+  Button1.Left := Round(hh/11*pic); Button1.Top := Round(hh/4*pic);
+  MaskEdit1.Height := Round(hh/40*pic); MaskEdit1.Width := Round(ww/35*pic);
+  MaskEdit1.Left := Round(hh/40*pic); MaskEdit1.Top := Round(hh/50*pic);
+  Label3.Height := Round(hh/30*pic); Label3.Width := Round(ww/25*pic);
+  Label3.Left := Round(hh/45*pic); Label3.Top := Round(hh/22*pic);
+  Panel2.Height := Round(hh/3.5*pic); Panel2.Width := Round(ww/6.5*pic);
+  Panel2.Left := Round(hh/3.4*pic); Panel2.Top := Round(hh/25*pic);
+  Image1.Height := Round(hh/6*pic); Image1.Width := Round(ww/5*pic);
+  Image1.Left := Round(hh/25.5*pic); Image1.Top := Round(hh/55*pic);
+  StaticText1.Height := Round(hh/30*pic); StaticText1.Width := Round(ww/5*pic);
+  StaticText1.Left := Round(hh/20.2*pic); StaticText1.Top := Round(hh/9.5*pic);
+  Memo1.Height := Round(hh/12*pic); Memo1.Width := Round(ww/5*pic);
+  Memo1.Left := Round(hh/40*pic); Memo1.Top := Round(hh/6.6*pic);
+  Memo2.Height := Round(hh/2.5*pic); Memo2.Width := Round(ww/2.055*pic);
+  Memo2.Left := Round(ww/150*pic); Memo2.Top := Round(hh/32*pic);
+  Button2.Height := Round(hh/45*pic); Button2.Width := Round(hh/8*pic);
+  Button2.Left := Round(hh/2.9*pic); Button2.Top := Round(hh/2.3*pic);
+  Label5.Height := Round(hh/30*pic); Label5.Width := Round(ww/2.5*pic);
+  Label5.Left := Round(hh/2.5*pic); Label5.Top := Round(hh/65*pic);
+  Button9.Height := Round(hh/45*pic); Button9.Width := Round(hh/45*pic);
+  Button9.Left := Round(hh/7*pic); Button9.Top := Round(hh/50*pic);
+  Label7.Height := Round(hh/30*pic); Label7.Width := Round(ww/2.5*pic);
+  Label7.Left := Round(hh/8.6*pic); Label7.Top := Round(hh/22*pic);
+
+  SynEdit1.Font.Size := Round(wf/230*pic);
+  Memo3.Font.Size := Round(wf/230*pic);
+  Panel1.Font.Size := Round(wf/280*pic);
+  MaskEdit1.Font.Size := Round(wf/300*pic);
+  MaskEdit2.Font.Size := Round(wf/300*pic);
+  Label6.Font.Size := Round(wf/310*pic);
+  Label1.Font.Size := Round(wf/310*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Button3.Font.Size := Round(wf/250*pic);
+  Button1.Font.Size := Round(wf/250*pic);
+  StaticText1.Font.Size := Round(wf/250*pic);
+  Memo1.Font.Size := Round(wf/280*pic);
+  Memo1.Font.Size := Round(wf/250*pic);
+  Button2.Font.Size := Round(wf/250*pic);
+  Label5.Font.Size := Round(wf/230*pic);
+  Label4.Font.Size := Round(wf/230*pic);
+  Button9.Font.Size := Round(wf/250*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Label7.Font.Size := Round(wf/310*pic);
+  Memo3.Font.Size := Round(wf/230*pic);
+  Panel1.Font.Size := Round(wf/280*pic);
+  MaskEdit1.Font.Size := Round(wf/300*pic);
+  MaskEdit2.Font.Size := Round(wf/300*pic);
+  Label6.Font.Size := Round(wf/310*pic);
+  Label1.Font.Size := Round(wf/310*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Button3.Font.Size := Round(wf/250*pic);
+  Button1.Font.Size := Round(wf/250*pic);
+  StaticText1.Font.Size := Round(wf/250*pic);
+  Memo1.Font.Size := Round(wf/280*pic);
+  Memo1.Font.Size := Round(wf/250*pic);
+  Button2.Font.Size := Round(wf/250*pic);
+  Label5.Font.Size := Round(wf/230*pic);
+  Label4.Font.Size := Round(wf/230*pic);
+  Button9.Font.Size := Round(wf/250*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Label7.Font.Size := Round(wf/310*pic);
+
+   end
+  else begin
+     pic := 0.75;
+  Form1.Height := Round(hh/2*pic);
+  Form1.Width := Round(ww/2*pic);
+  Memo3.Height := Round(hh/22*pic); Memo3.Width := Round(ww/2.055*pic);
+  Memo3.Left := Round(ww/150*pic); Memo3.Top := Round(hh/32*pic);
+  SynEdit1.Height := Round(hh/2.9*pic); SynEdit1.Width := Round(ww/2.055*pic);
+  SynEdit1.Left := Round(ww/150*pic); SynEdit1.Top := Round(hh/12*pic);
+  Panel1.Height := Round(hh/6*pic); Panel1.Width := Round(ww/8*pic);
+  Panel1.Left := Round(hh/3.0*pic); Panel1.Top := Round(hh/15*pic);
+  Button3.Height := Round(hh/40*pic); Button3.Width := Round(ww/26*pic);
+  Button3.Left := Round(hh/14.5*pic); Button3.Top := Round(hh/7.7*pic);
+  MaskEdit2.Height := Round(hh/40*pic); MaskEdit2.Width := Round(ww/35*pic);
+  MaskEdit2.Left := Round(hh/40*pic); MaskEdit2.Top := Round(hh/14*pic);
+  Label6.Height := Round(hh/30*pic); Label6.Width := Round(ww/25*pic);
+  Label6.Left := Round(hh/45*pic); Label6.Top := Round(hh/10*pic);
+  Label1.Height := Round(hh/30*pic); Label1.Width := Round(ww/25*pic);
+  Label1.Left := Round(hh/9.5*pic); Label1.Top := Round(hh/10*pic);
+  Button8.Height := Round(hh/45*pic); Button8.Width := Round(hh/45*pic);
+  Button8.Left := Round(hh/6.5*pic); Button8.Top := Round(hh/14*pic);
+  Button7.Height := Round(hh/45*pic); Button7.Width := Round(hh/45*pic);
+  Button7.Left := Round(hh/9*pic); Button7.Top := Round(hh/14*pic);
+  Button1.Height := Round(hh/45*pic); Button1.Width := Round(hh/15*pic);
+  Button1.Left := Round(hh/11*pic); Button1.Top := Round(hh/4*pic);
+  MaskEdit1.Height := Round(hh/40*pic); MaskEdit1.Width := Round(ww/35*pic);
+  MaskEdit1.Left := Round(hh/40*pic); MaskEdit1.Top := Round(hh/50*pic);
+  Label3.Height := Round(hh/30*pic); Label3.Width := Round(ww/25*pic);
+  Label3.Left := Round(hh/45*pic); Label3.Top := Round(hh/22*pic);
+  Panel2.Height := Round(hh/3.5*pic); Panel2.Width := Round(ww/6.5*pic);
+  Panel2.Left := Round(hh/3.4*pic); Panel2.Top := Round(hh/25*pic);
+  Image1.Height := Round(hh/6*pic); Image1.Width := Round(ww/5*pic);
+  Image1.Left := Round(hh/25.5*pic); Image1.Top := Round(hh/55*pic);
+  StaticText1.Height := Round(hh/30*pic); StaticText1.Width := Round(ww/5*pic);
+  StaticText1.Left := Round(hh/20.2*pic); StaticText1.Top := Round(hh/9.5*pic);
+  Memo1.Height := Round(hh/12*pic); Memo1.Width := Round(ww/5*pic);
+  Memo1.Left := Round(hh/40*pic); Memo1.Top := Round(hh/6.6*pic);
+  Memo2.Height := Round(hh/2.5*pic); Memo2.Width := Round(ww/2.055*pic);
+  Memo2.Left := Round(ww/150*pic); Memo2.Top := Round(hh/32*pic);
+  Button2.Height := Round(hh/45*pic); Button2.Width := Round(hh/8*pic);
+  Button2.Left := Round(hh/2.9*pic); Button2.Top := Round(hh/2.3*pic);
+  Label5.Height := Round(hh/30*pic); Label5.Width := Round(ww/2.5*pic);
+  Label5.Left := Round(hh/2.5*pic); Label5.Top := Round(hh/65*pic);
+  Button9.Height := Round(hh/45*pic); Button9.Width := Round(hh/45*pic);
+  Button9.Left := Round(hh/7*pic); Button9.Top := Round(hh/50*pic);
+  Label7.Height := Round(hh/30*pic); Label7.Width := Round(ww/2.5*pic);
+  Label7.Left := Round(hh/8.6*pic); Label7.Top := Round(hh/22*pic);
+
+  SynEdit1.Font.Size := Round(wf/230*pic);
+  Memo3.Font.Size := Round(wf/230*pic);
+  Panel1.Font.Size := Round(wf/280*pic);
+  MaskEdit1.Font.Size := Round(wf/300*pic);
+  MaskEdit2.Font.Size := Round(wf/300*pic);
+  Label6.Font.Size := Round(wf/310*pic);
+  Label1.Font.Size := Round(wf/310*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Button3.Font.Size := Round(wf/250*pic);
+  Button1.Font.Size := Round(wf/250*pic);
+  StaticText1.Font.Size := Round(wf/250*pic);
+  Memo1.Font.Size := Round(wf/280*pic);
+  Memo1.Font.Size := Round(wf/250*pic);
+  Button2.Font.Size := Round(wf/250*pic);
+  Label5.Font.Size := Round(wf/230*pic);
+  Label4.Font.Size := Round(wf/230*pic);
+  Button9.Font.Size := Round(wf/250*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Label7.Font.Size := Round(wf/310*pic);
+  Memo3.Font.Size := Round(wf/230*pic);
+  Panel1.Font.Size := Round(wf/280*pic);
+  MaskEdit1.Font.Size := Round(wf/300*pic);
+  MaskEdit2.Font.Size := Round(wf/300*pic);
+  Label6.Font.Size := Round(wf/310*pic);
+  Label1.Font.Size := Round(wf/310*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Button3.Font.Size := Round(wf/250*pic);
+  Button1.Font.Size := Round(wf/250*pic);
+  StaticText1.Font.Size := Round(wf/250*pic);
+  Memo1.Font.Size := Round(wf/280*pic);
+  Memo1.Font.Size := Round(wf/250*pic);
+  Button2.Font.Size := Round(wf/250*pic);
+  Label5.Font.Size := Round(wf/230*pic);
+  Label4.Font.Size := Round(wf/230*pic);
+  Button9.Font.Size := Round(wf/250*pic);
+  Label3.Font.Size := Round(wf/310*pic);
+  Label7.Font.Size := Round(wf/310*pic);
+
+
+  end;
+
+ { *  myINI := TINIFile.Create(ExtractFilePath(Application.EXEName) +
+  'blenbridge.ini');  * }
+
+   { inivaluef := myINI.ReadFloat('Settings','Form Size', 3.0);
+
+    if inivaluef = 2.0 then Button5.Caption := 'Size 1';
+    if inivaluef = 3.0 then Button5.Caption := 'Size 2';
+    if inivaluef = 4.0 then Button5.Caption := 'Size 3';
+    if inivaluef = 5.0 then Button5.Caption := 'Size 4';
+    if inivaluef = 1.0 then Button5.Caption := 'Size 5';   }
+
+  { *  myINI.Free; * }
+    vtkout := false;
+    plyout := false;
+
 end;
 
 procedure TForm1.MenuItem10Click(Sender: TObject);
@@ -574,7 +857,7 @@ begin
    F := 1;
 
    output.Add('# vtk DataFile Version 3.0');
-   output.Add('# created by Blenbridge 1.20');
+   output.Add('# created by Blenbridge 1.21');
    output.Add('ASCII');
    output.Add('DATASET UNSTRUCTURED_GRID');
 
@@ -724,7 +1007,7 @@ end;
 
 procedure TForm1.SearchforEdge(Sender: TObject);
 var  i, n, s, e : Integer;
-  { charz,} a1, a2, a3, a4, FES, flst, flsb, topkey, bottomkey{, tempT2}: String;
+  { charz,} a1, a2, a3, a4, FES, flst, flsb, topkey, bottomkey : String;
    cop1x, cop1y, cop1z, cop2x, cop2y, cop2z, cop3x, cop3y, cop3z, coph, copw,
    copl, copvol, copcpx, copcpy, copcpz, comvol, coppa : Double;
    writeit : Boolean;
@@ -794,14 +1077,14 @@ begin
       end;
       end;
 
-      {chk
+     { chk
       output.Add( ' ');
       output.Add('vertlistf[' + InttoStr(i) + '] .' + vertlistf[i] + '.');
       for s := 0 to Trigarray.Count -1 do
       output.Add('Trigarray[' + InttoStr(s) + '] .' + Trigarray[s] + '.');
       output.Add('a1= .' + a1 + '. a2= .' + a2 + '.');
       output.Add('a3= .' + a3 + '. a4= .' + a4 + '.');
-      chk}
+      chk  }
 
       for s := 0 to Trigarray.Count -1 do begin
       writeit := false;
@@ -966,27 +1249,34 @@ begin
       end
       else bottomkey := '';
 
-      {chk
+     { chk
       output.Add( 'a1adj a1 a4 = '  + a1adj + ' ' + a1 + ' ' + a4);
       output.Add( 'a2adj a2 a3 = '  + a2adj + ' ' + a2 + ' ' + a3);
       output.Add('flst = .' + flst + '.');
       output.Add('flsb = .' + flsb + '.');
       output.Add('topkey bottomkey .' + topkey + '. .' + bottomkey + '.');
-      chk}
+      chk }
 
       {The block below double-checks to make sure the prospective keystone
-      face is present in luniverse. This may not be necessary, but it
-      is a nod to Murphy's Law. Note: both coppa and copvol represent
+      face is present in luniverse. This particular check may greatly simplify
+      identification of the opposite face. Note: both coppa and copvol represent
       volumes, but a reasonable relation factor to use is a guess and subject
       to change.}
 
-     { for e := 0 to luniverse.Count -1 do begin
+      for e := 0 to luniverse.Count -1 do begin
       if (AnsiPos(' ' + a1adj + ' ', luniverse[e]) <> 0) then
-      if (AnsiPos(' ' + a1 + ' ', luniverse[e]) <> 0) then
-      if (AnsiPos(' ' + a4 + ' ', luniverse[e]) <> 0) then
-      if (AnsiPos(' ' + topkey + ' ', luniverse[e]) <> 0) then }
-      if Abs(coppa) > comvol * copvol then begin
+     { if (AnsiPos(' ' + a1 + ' ', luniverse[e]) <> 0) then
+      if (AnsiPos(' ' + a4 + ' ', luniverse[e]) <> 0) then }
+      if (AnsiPos(' ' + a2adj + ' ', luniverse[e]) <> 0) then
+      if (AnsiPos(' ' + topkey + ' ', luniverse[e]) <> 0) then
+      if (AnsiPos(' ' + bottomkey + ' ', luniverse[e]) <> 0) then
+      begin
+     { if Abs(coppa) > comvol * copvol then begin}
+      {chk
+      output.Add('luniverse[e] ' + luniverse[e]);
+      chk}
       writeit := true;
+      end;
       end;
 
       if writeit = true then begin
